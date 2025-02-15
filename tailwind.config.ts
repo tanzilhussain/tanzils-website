@@ -8,6 +8,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        vollkorn: ['Vollkorn', 'serif'],  // Define a custom font family
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
