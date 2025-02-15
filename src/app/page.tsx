@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaEnvelope, FaLinkedin, FaGithub, FaBars } from "react-icons/fa";
+import { FaEnvelope, FaLinkedin, FaGithub } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -15,7 +15,6 @@ export default function HomePage() {
   const [showGlimpse, setShowGlimpse] = useState(false);
   const [showArrow, setShowArrow] = useState(false);
   const [scrollY, setScrollY] = useState(0);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,6 +38,7 @@ export default function HomePage() {
       }
     };
 
+    // Debounce scroll event for performance
     const debouncedScroll = () => {
       requestAnimationFrame(handleScroll);
     };
@@ -85,102 +85,54 @@ export default function HomePage() {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white to-purple-200 flex flex-col items-center text-center px-4 sm:px-6 overflow-x-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-white to-purple-200 flex flex-col items-center text-center px-6 overflow-x-hidden">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-white/90 backdrop-blur-sm z-50 py-4 px-4 sm:px-10">
-        <div className="flex justify-between items-center">
-          <div className="text-2xl text-gray-700">
-            <Link href="/">🏠</Link>
-          </div>
-          <div className="hidden sm:flex gap-6 text-gray-700">
-            <Link href="/my-work" className="hover:text-black text-2xl">
-              my work
-            </Link>
-            <Link href="/on-the-side" className="hover:text-black text-2xl">
-              (on the side)
-            </Link>
-            <Link href="/my-story" className="hover:text-black text-2xl">
-              my story
-            </Link>
-            <div className="flex gap-6 mb-1 items-end">
-              <Link
-                href="mailto:tanzilhannah@gmail.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-black text-2xl"
-              >
-                <FaEnvelope />
-              </Link>
-              <Link
-                href="https://www.linkedin.com/in/tanzilhussain/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-black text-2xl"
-              >
-                <FaLinkedin />
-              </Link>
-              <a
-                href="https://github.com/tanzilhussain"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-black text-2xl"
-              >
-                <FaGithub />
-              </a>
-            </div>
-          </div>
-          <button
-            className="sm:hidden text-2xl text-gray-700"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            <FaBars />
-          </button>
+      <nav className="absolute top-5 w-full flex justify-between items-center px-10">
+        <div className="text-2xl text-gray-700">
+          <Link href="/">🏠</Link>
         </div>
-        {isMobileMenuOpen && (
-          <div className="sm:hidden mt-4 space-y-4">
-            <Link href="/my-work" className="block hover:text-black text-2xl">
-              my work
+        <div className="flex gap-6 text-gray-700">
+          <Link href="/my-work" className="hover:text-black text-2xl">
+            my work
+          </Link>
+          <Link href="/on-the-side" className="hover:text-black text-2xl">
+            (on the side)
+          </Link>
+          <Link href="/my-story" className="hover:text-black text-2xl">
+            my story
+          </Link>
+          <div className="flex gap-6 mb-1 items-end">
+            <Link
+              href="mailto:tanzilhannah@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-black text-2xl"
+            >
+              <FaEnvelope />
             </Link>
-            <Link href="/on-the-side" className="block hover:text-black text-2xl">
-              (on the side)
+            <Link
+              href="https://www.linkedin.com/in/tanzilhussain/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-black text-2xl"
+            >
+              <FaLinkedin />
             </Link>
-            <Link href="/my-story" className="block hover:text-black text-2xl">
-              my story
-            </Link>
-            <div className="flex gap-6 mt-4">
-              <Link
-                href="mailto:tanzilhannah@gmail.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-black text-2xl"
-              >
-                <FaEnvelope />
-              </Link>
-              <Link
-                href="https://www.linkedin.com/in/tanzilhussain/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-black text-2xl"
-              >
-                <FaLinkedin />
-              </Link>
-              <a
-                href="https://github.com/tanzilhussain"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-black text-2xl"
-              >
-                <FaGithub />
-              </a>
-            </div>
+            <a
+              href="https://github.com/tanzilhussain"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-black text-2xl"
+            >
+              <FaGithub />
+            </a>
           </div>
-        )}
+        </div>
       </nav>
 
-      {/* Rest of the code remains the same, but ensure all elements use responsive classes */}
-      {/* Example: Adjust text sizes and layouts for smaller screens */}
-      <div className="absolute left-4 sm:left-20 top-[120px] sm:top-[160px]">
-        <h1 className="text-4xl sm:text-7xl font-bold text-gray-900 text-left font-vollkorn">
+      {/* Initial Text Group */}
+      <div className="absolute left-20 top-[160px]">
+        <h1 className="text-7xl font-bold text-gray-900 text-left font-vollkorn">
           hi, i&apos;m tanzil hussain— a{" "}
           <AnimatePresence mode="wait">
             <motion.span
@@ -196,6 +148,7 @@ export default function HomePage() {
           </AnimatePresence>
         </h1>
       </div>
+
       {/* "Here’s a glimpse of my world" Text */}
       <motion.div
         className="absolute left-20 top-[275px]"
@@ -333,4 +286,4 @@ export default function HomePage() {
       </footer>
     </div>
   );
-}
+} 
