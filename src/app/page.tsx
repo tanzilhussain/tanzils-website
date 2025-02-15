@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaEnvelope, FaLinkedin, FaGithub } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
+import Head from 'next/head';
 
 const roles = ["visionary🔮", "traveler✈️ ", "builder🛠", "designer🎨", "strategist🧠", "dreamer🌙", "analyst 💭"];
 
@@ -83,8 +84,20 @@ export default function HomePage() {
       />
     </svg>
   );
+  
 
   return (
+
+    <>
+      <Head>
+        <title>Tanzil's Website</title>
+        <meta name="description" content="Welcome to Tanzil's personal website!" />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="shortcut icon" href="/favicon-16x16.png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+      </Head>
+
     <div className="min-h-screen bg-gradient-to-br from-white to-purple-200 flex flex-col items-center text-center px-6 overflow-x-hidden">
       {/* Navigation */}
       <nav className="absolute top-5 w-full flex justify-between items-center px-10">
@@ -285,5 +298,6 @@ export default function HomePage() {
         </p>
       </footer>
     </div>
+    </>
   );
 } 

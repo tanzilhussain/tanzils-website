@@ -3,6 +3,7 @@
 import { FaEnvelope, FaLinkedin, FaGithub } from "react-icons/fa";
 import Link from 'next/link';
 import Image from 'next/image';
+import Head from 'next/head';
 
 export default function MyWork() {
   const projects = [
@@ -32,6 +33,15 @@ export default function MyWork() {
   ];
 
   return (
+    <>
+    <Head>
+      <title>Tanzil's Website</title>
+      <meta name="description" content="Welcome to Tanzil's personal website!" />
+      <link rel="icon" href="/favicon.ico" />
+      <link rel="shortcut icon" href="/favicon-16x16.png" />
+      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+      <link rel="manifest" href="/site.webmanifest" />
+    </Head>
     <div className="min-h-screen bg-gradient-to-br from-white to-purple-200 flex flex-col items-center text-center px-6 overflow-x-hidden">
       {/* Navigation */}
       <nav className="absolute top-5 w-full flex justify-between items-center px-10">
@@ -122,5 +132,6 @@ export default function MyWork() {
         <p className="text-1xl underline"> <a href= "https://github.com/tanzilhussain/tanzils-website">&copy; {new Date().getFullYear()} Tanzil Hussain. Built with ❤️ using Next.js, Tailwind CSS, and TypeScript. </a></p>
       </footer>
     </div>
+    </>
   );
 }
