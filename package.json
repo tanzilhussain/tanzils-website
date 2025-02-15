@@ -1,13 +1,12 @@
 {
-"homepage": "https://tanzilhussain.github.io/tanzilhussain.github.io",
+  "name": "my-website",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d out"
+    "lint": "next lint"
   },
   "dependencies": {
     "framer-motion": "^12.4.2",
