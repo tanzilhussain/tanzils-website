@@ -35,7 +35,7 @@ export default function MyWork() {
   return (
     <>
     <Head>
-      <title>Tanzil's Website</title>
+      <title>Tanzil&apos;s Website</title>
       <meta name="description" content="Welcome to Tanzil's personal website!" />
       <link rel="icon" href="/favicon.ico" />
       <link rel="shortcut icon" href="/favicon-16x16.png" />

@@ -90,8 +90,8 @@ export default function HomePage() {
 
     <>
       <Head>
-        <title>Tanzil's Website</title>
-        <meta name="description" content="Welcome to Tanzil's personal website!" />
+        <title>Tanzil&apos;s Website</title>
+        <meta name="description" content="Welcome to Tanzils personal website!" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="shortcut icon" href="/favicon-16x16.png" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
