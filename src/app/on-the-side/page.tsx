@@ -103,7 +103,7 @@ const OnTheSide = () => {
       {/* Footer */}
       <footer className="mt-10 w-full text-center py-10 text-black">
         <p className="text-1xl underline">
-          <a href="https://github.com/tanzilhannah/tanzilhannah.github.io">
+          <a href="https://github.com/tanzilhussain/tanzils-website">
             &copy; {new Date().getFullYear()} Tanzil Hussain. Built with ❤️ using Next.js, Tailwind CSS, and TypeScript.
           </a>
         </p>

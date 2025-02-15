@@ -119,7 +119,7 @@ export default function MyWork() {
 
       {/* Footer */}
       <footer className="absolute bottom-0 w-screen w-full text-center py-10 text-black">
-        <p className="text-1xl underline"> <a href= "https://github.com/tanzilhannah/tanzilhannah.github.io">&copy; {new Date().getFullYear()} Tanzil Hussain. Built with ❤️ using Next.js, Tailwind CSS, and TypeScript. </a></p>
+        <p className="text-1xl underline"> <a href= "https://github.com/tanzilhussain/tanzils-website">&copy; {new Date().getFullYear()} Tanzil Hussain. Built with ❤️ using Next.js, Tailwind CSS, and TypeScript. </a></p>
       </footer>
     </div>
   );
