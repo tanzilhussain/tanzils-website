@@ -7,6 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Head from 'next/head';
 
+
 const roles = ["visionary🔮", "traveler✈️ ", "builder🛠", "designer🎨", "strategist🧠", "dreamer🌙", "analyst 💭"];
 
 export default function HomePage() {
@@ -90,7 +91,7 @@ export default function HomePage() {
 
     <>
       <Head>
-        <title>Tanzil&apos;s Website</title>
+        <title>Tanzil Hussain</title>
         <meta name="description" content="Welcome to Tanzils personal website!" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="shortcut icon" href="/favicon-16x16.png" />
@@ -145,7 +146,7 @@ export default function HomePage() {
 
       {/* Initial Text Group */}
       <div className="absolute left-20 top-[160px]">
-        <h1 className="text-7xl font-bold text-gray-900 text-left font-vollkorn">
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 text-left font-vollkorn">
           hi, i&apos;m tanzil hussain— a{" "}
           <AnimatePresence mode="wait">
             <motion.span
@@ -169,7 +170,7 @@ export default function HomePage() {
         animate={{ y: showGlimpse ? 275 : 0 }}
         transition={{ duration: 1, ease: "easeInOut" }}
       >
-        <p className="text-7xl font-semibold text-black-600 text-left font-vollkorn">
+        <p className="text-4xl md:text-6xl lg:text-7xl font-semibold text-gray-900 text-left font-vollkorn">
           and here’s a glimpse of my world.
         </p>
       </motion.div>
@@ -189,10 +190,10 @@ export default function HomePage() {
             height={200}
             className="w-[180px] h-[200px] object-cover rounded-xl shadow-lg float-right mr-4"
           />
-          <p className="text-2xl leading-[2.5] font-semibold text-gray-900 text-left font-work-sans">
+          <p className="text-4l md:text-6l lg:text-2xl leading-[2.5] font-semibold text-gray-900 text-left font-work-sans">
             I&apos;m studying <span className="font-bold text-purple-600">Artificial Intelligence & Business</span> at USC, and I&apos;m passionate{" "}
             <br />
-            about building AI-driven, user-centric innovations. I also love photography <br /> (PS: check out on the side!), sightseeing, slam poetry, and butterfly watching.
+            about building AI-driven, user-centric innovations. I also love photography <br /> (PS: check out on the side!), sightseeing, flea markets, slam poetry, and butterfly watching.
             <br />{" "}
             <a
               href="https://www.linkedin.com/in/tanzilhussain/"
