@@ -207,7 +207,7 @@ export default function HomePage() {
                   and I&apos;m passionate about building AI-driven, user-centric innovations.
                 </p>
                 <p className="opacity-100">
-                  I also love photography, sightseeing, flea markets, slam poetry, and butterfly watching.
+                  I also love photography, flea markets, and butterfly watching.
                 </p>
                 <a
                   href="https://www.linkedin.com/in/tanzilhussain/"
