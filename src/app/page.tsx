@@ -172,7 +172,7 @@ export default function HomePage() {
         {/* Hero Section */}
         <div className="max-w-4xl mx-auto mt-32 px-4">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-gray-900">
-            hi, i'm tanzil hussain— <br />a{" "}
+            hi, i&apos;m tanzil hussain— <br />a{" "}
             <AnimatePresence mode="wait">
               <motion.span
                 key={roles[roleIndex]}
@@ -203,8 +203,8 @@ export default function HomePage() {
               />
               <div className="prose prose-lg text-left">
                 <p>
-                  I'm studying <span className="text-purple-600 font-semibold">Artificial Intelligence & Business</span> at USC,
-                  and I'm passionate about building AI-driven, user-centric innovations.
+                  I&apos;m studying <span className="text-purple-600 font-semibold">Artificial Intelligence & Business</span> at USC,
+                  and I&apos;m passionate about building AI-driven, user-centric innovations.
                 </p>
                 <p>
                   I also love photography, sightseeing, flea markets, slam poetry, and butterfly watching.
@@ -215,7 +215,7 @@ export default function HomePage() {
                   rel="noopener noreferrer"
                   className="text-purple-600 font-semibold hover:underline"
                 >
-                  Let's connect!
+                  Let&apos;s connect!
                 </a>{" "}
                 🦋
               </div>

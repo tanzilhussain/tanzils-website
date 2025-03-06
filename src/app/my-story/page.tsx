@@ -154,7 +154,7 @@ export default function MyStory() {
                 className="text-left space-y-4 text-lg"
               >
                 <p>
-                  Hello! Thanks for being here :) My name is Tanzil, and I'm a student at the
+                  Hello! Thanks for being here :) My name is Tanzil, and I&apos;m a student at the
                   <span className="text-primary font-semibold text-purple-700"> University of Southern California</span>, studying
                   <span className="text-primary font-semibold text-purple-700"> Artificial Intelligence for Business</span>.
                 </p>
@@ -163,17 +163,17 @@ export default function MyStory() {
                   Over time, I developed a passion for <span className="text-primary font-semibold text-purple-700">bridging the gap between business and technology</span>.
                 </p>
                 <p>
-                  From leading initiatives in DECA to interning at tech and financial firms, I've gained experience in
+                  From leading initiatives in DECA to interning at tech and financial firms, I&apos;ve gained experience in
                   <span className="text-primary font-semibold text-purple-700"> product strategy, data-driven decision-making, and market innovation</span>.
                 </p>
                 <p>
-                  I'm especially interested in <span className="text-primary font-semibold text-purple-700">data analytics, product management, startups, and AI-driven solutions</span>.
-                  If you're interested in building something impactful together, 
+                  I&apos;m especially interested in <span className="text-primary font-semibold text-purple-700">data analytics, product management, startups, and AI-driven solutions</span>.
+                  If you&apos;re interested in building something impactful together, 
                 </p>
                 {/* LinkedIn CTA */}
                 <p>
                   <a href="https://linkedin.com/in/tanzilhussain" target="_blank" className="text-primary text-2xl font-semibold hover:underline text-purple-700">
-                    Let's connect!
+                    Let&apos;s connect!
                   </a> 🦋
                 </p>
               </motion.div>
