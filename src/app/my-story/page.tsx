@@ -128,13 +128,23 @@ export default function MyStory() {
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-12"></h1>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
             {/* Profile Image */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.8 }} 
-              animate={{ opacity: 1, scale: 1 }} 
-              transition={{ duration: 1, ease: "easeOut" }}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.5, ease: "easeInOut" }}
+              layout = "position"
+              className="w-full max-w-[300px] mx-auto rounded-2xl shadow-lg object-cover" 
             >
-              <Image src="/IMG_2313.jpg" alt="Profile" width={400} height={400} className="w-full max-w-md rounded-2xl shadow-lg" />
+              <Image
+                src="/headshot.png"
+                alt="Profile"
+                width={400}
+                height={400}
+                className="w-full h-auto rounded-2xl shadow-lg object-cover"
+              />
             </motion.div>
+
+
             {/* About Me Text */}
             {showText && (
               <motion.div 
