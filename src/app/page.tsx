@@ -2,52 +2,51 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaEnvelope, FaLinkedin, FaGithub } from "react-icons/fa";
+import { FaEnvelope, FaLinkedin, FaGithub, FaBars, FaTimes } from "react-icons/fa";
+import { BarChart2, Database, LineChart, Computer, PieChart, Brain } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import Head from 'next/head';
+import Head from "next/head";
 
+const roles = ["visionary🔮", "traveler✈️", "builder🛠", "designer🎨", "strategist🧠", "dreamer🌙", "analyst 💭"];
 
-const roles = ["visionary🔮", "traveler✈️ ", "builder🛠", "designer🎨", "strategist🧠", "dreamer🌙", "analyst 💭"];
+const currentFocus = [
+  {
+    icon: Database,
+    title: "Data Management",
+    description: "Working with SQL, MongoDB, and data warehousing solutions for scalable data storage/retrieval",
+  },
+  {
+    icon: BarChart2,
+    title: "Business Intelligence",
+    description: "Creating actionable insights with Power BI, Tableau, and other data viz tools",
+  },
+  {
+    icon: LineChart,
+    title: "Analytics",
+    description: "Performing statistical analysis using Python, R, and advanced Excel to inform data-driven decisions",
+  },
+  {
+    icon: Brain,
+    title: "AI Integration",
+    description: "Integrating AI algorithms with traditional analytics to generate enhanced insights",
+  },
+  {
+    icon: PieChart,
+    title: "Reporting",
+    description: "Building automated, interactive dashboards to track and present key metrics",
+  },
+  {
+    icon: Computer,
+    title: "Software Development",
+    description: "Building apps using HTML/CSS, JS, React, and other modern technologies",
+  },
+];
 
 export default function HomePage() {
-  const [color, setColor] = useState("rgb(211, 211, 211)");
-  const [arrowSize, setArrowSize] = useState(16);
   const [roleIndex, setRoleIndex] = useState(0);
   const [showGlimpse, setShowGlimpse] = useState(false);
-  const [showArrow, setShowArrow] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      setScrollY(scrollY);
-
-      const titleElement = document.getElementById("current-pursuits-title");
-      const titlePosition = titleElement?.getBoundingClientRect().top;
-
-      if (scrollY === 0) {
-        setColor("rgb(211, 211, 211)");
-        setArrowSize(16);
-      } else if (titlePosition !== undefined && titlePosition >= -100) {
-        const r = Math.min(74 + 150 * (scrollY / 1500), 255);
-        const g = Math.min(10 + 100 * (scrollY / 1500), 112);
-        const b = Math.min(255, 74 + 150 * (scrollY / 1000));
-        setColor(`rgb(${r}, ${g}, ${b})`);
-        setArrowSize(10 - scrollY / 10);
-      } else {
-        setColor("rgb(211, 211, 211)");
-      }
-    };
-
-    // Debounce scroll event for performance
-    const debouncedScroll = () => {
-      requestAnimationFrame(handleScroll);
-    };
-
-    window.addEventListener("scroll", debouncedScroll);
-    return () => window.removeEventListener("scroll", debouncedScroll);
-  }, []);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -63,242 +62,239 @@ export default function HomePage() {
     return () => clearTimeout(timer);
   }, []);
 
-  useEffect(() => {
-    const arrowTimer = setTimeout(() => {
-      setShowArrow(true);
-    }, 2000);
-    return () => clearTimeout(arrowTimer);
-  }, []);
-
-  const ArrowIcon = () => (
-    <svg
-      id="arrow-icon"
-      width={arrowSize}
-      height={arrowSize * 6.75}
-      viewBox="0 0 16 108"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M7.29289 107.707C7.68342 108.098 8.31658 108.098 8.70711 107.707L15.0711 101.343C15.4616 100.953 15.4616 100.319 15.0711 99.9289C14.6805 99.5384 14.0474 99.5384 13.6569 99.9289L8 105.586L2.34315 99.9289C1.95262 99.5384 1.31946 99.5384 0.928932 99.9289C0.538408 100.319 0.538408 100.953 0.928932 101.343L7.29289 107.707ZM7 0L7 107H9L9 0L7 0Z"
-        fill="black"
-      />
-    </svg>
-  );
-  
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
 
   return (
-
     <>
       <Head>
         <title>Tanzil Hussain</title>
-        <meta name="description" content="Welcome to Tanzils personal website!" />
+        <meta name="description" content="Welcome to Tanzil's personal website!" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="shortcut icon" href="/favicon-16x16.png" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
 
-    <div className="min-h-screen bg-gradient-to-br from-white to-purple-200 flex flex-col items-center text-center px-6 overflow-x-hidden">
-      {/* Navigation */}
-      <nav className="absolute top-5 w-full flex justify-between items-center px-10">
-        <div className="text-2xl text-gray-700">
-          <Link href="/">🏠</Link>
-        </div>
-        <div className="flex gap-6 text-gray-700">
-          <Link href="/my-work" className="hover:text-black text-2xl">
-            my work
-          </Link>
-          <Link href="/on-the-side" className="hover:text-black text-2xl">
-            (on the side)
-          </Link>
-          <Link href="/my-story" className="hover:text-black text-2xl">
-            my story
-          </Link>
-          <div className="flex gap-6 mb-1 items-end">
-            <Link
-              href="mailto:tanzilhannah@gmail.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-black text-2xl"
-            >
-              <FaEnvelope />
-            </Link>
-            <Link
-              href="https://www.linkedin.com/in/tanzilhussain/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-black text-2xl"
-            >
-              <FaLinkedin />
-            </Link>
-            <a
-              href="https://github.com/tanzilhussain"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-black text-2xl"
-            >
-              <FaGithub />
-            </a>
+      <div className="min-h-screen bg-gradient-to-br from-white to-purple-100 flex flex-col items-center text-center px-6 overflow-x-hidden">
+        {/* Navigation */}
+        <nav className="fixed top-0 w-full bg-white z-50 shadow-md">
+          <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div className="text-2xl text-gray-700">
+              <Link href="/">🏠</Link>
+            </div>
+            {/* Hamburger Menu Icon */}
+            <div className="md:hidden text-2xl text-gray-700 cursor-pointer" onClick={toggleMobileMenu}>
+              {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
+            </div>
+            {/* Desktop Navigation Links */}
+            <div className="hidden md:flex gap-6 text-gray-700">
+              <Link href="/my-work" className="hover:text-black text-xl">
+                my work
+              </Link>
+              <Link href="/on-the-side" className="hover:text-black text-xl">
+                (on the side)
+              </Link>
+              <Link href="/my-story" className="hover:text-black text-xl">
+                my story
+              </Link>
+              <div className="flex gap-6 mb-1 items-end">
+                <Link
+                  href="mailto:tanzilhannah@gmail.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-black text-xl"
+                >
+                  <FaEnvelope />
+                </Link>
+                <Link
+                  href="https://www.linkedin.com/in/tanzilhussain/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-black text-xl"
+                >
+                  <FaLinkedin />
+                </Link>
+                <Link
+                  href="https://github.com/tanzilhussain"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-black text-xl"
+                >
+                  <FaGithub />
+                </Link>
+              </div>
+            </div>
           </div>
-        </div>
-      </nav>
+          {/* Mobile Navigation Links */}
+          {isMobileMenuOpen && (
+            <div className="md:hidden bg-white py-4">
+              <Link href="/my-work" className="block px-4 py-2 text-gray-700 hover:bg-purple-50">
+                my work
+              </Link>
+              <Link href="/on-the-side" className="block px-4 py-2 text-gray-700 hover:bg-purple-50">
+                (on the side)
+              </Link>
+              <Link href="/my-story" className="block px-4 py-2 text-gray-700 hover:bg-purple-50">
+                my story
+              </Link>
+              <div className="flex gap-4 px-4 py-2">
+                <Link
+                  href="mailto:tanzilhannah@gmail.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-700 hover:text-black"
+                >
+                  <FaEnvelope />
+                </Link>
+                <Link
+                  href="https://www.linkedin.com/in/tanzilhussain/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-700 hover:text-black"
+                >
+                  <FaLinkedin />
+                </Link>
+                <Link
+                  href="https://github.com/tanzilhussain"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-700 hover:text-black"
+                >
+                  <FaGithub />
+                </Link>
+              </div>
+            </div>
+          )}
+        </nav>
 
-      {/* Initial Text Group */}
-      <div className="absolute left-20 top-[160px]">
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 text-left font-vollkorn">
-          hi, i&apos;m tanzil hussain— a{" "}
-          <AnimatePresence mode="wait">
-            <motion.span
-              key={roles[roleIndex]}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-              className="font-semibold text-purple-600"
-            >
-              {roles[roleIndex]}
-            </motion.span>
-          </AnimatePresence>
-        </h1>
-      </div>
+        {/* Hero Section */}
+        <div className="max-w-4xl mx-auto mt-32 px-4">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-gray-900">
+            hi, i'm tanzil hussain— <br />a{" "}
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={roles[roleIndex]}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                className="text-purple-600"
+              >
+                {roles[roleIndex]}
+              </motion.span>
+            </AnimatePresence>
+          </h1>
 
-      {/* "Here’s a glimpse of my world" Text */}
-      <motion.div
-        className="absolute left-20 top-[275px]"
-        initial={{ y: 0 }}
-        animate={{ y: showGlimpse ? 275 : 0 }}
-        transition={{ duration: 1, ease: "easeInOut" }}
-      >
-        <p className="text-4xl md:text-6xl lg:text-7xl font-semibold text-gray-900 text-left font-vollkorn">
-          and here’s a glimpse of my world.
-        </p>
-      </motion.div>
-
-      {/* Photo and Description */}
-      <motion.div
-        className="absolute left-20 top-[275px]"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: showGlimpse ? 1 : 0 }}
-        transition={{ delay: 1, duration: 1, ease: "easeInOut" }}
-      >
-        <div className="flex items-center space-x-10">
-          <Image
-            src="/IMG_0418.jpg"
-            alt="Tanzil Hussain"
-            width={180}
-            height={200}
-            className="w-[180px] h-[200px] object-cover rounded-xl shadow-lg float-right mr-4"
-          />
-          <p className="text-4l md:text-6l lg:text-2xl leading-[2.5] font-semibold text-gray-900 text-left font-work-sans">
-            I&apos;m studying <span className="font-bold text-purple-600">Artificial Intelligence & Business</span> at USC, and I&apos;m passionate{" "}
-            <br />
-            about building AI-driven, user-centric innovations. I also love photography <br /> (PS: check out on the side!), sightseeing, flea markets, slam poetry, and butterfly watching.
-            <br />{" "}
-            <a
-              href="https://www.linkedin.com/in/tanzilhussain/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-purple-600 font-bold underline"
-            >
-              Let&apos;s connect!
-            </a>{" "}
-            🦋
-          </p>
-        </div>
-      </motion.div>
-
-      {/* Scroll Arrow */}
-      {showArrow && (
-        <motion.div
-          className="absolute bottom-[50px] right-50 text-gray-600"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
-        >
+          {/* Introduction */}
           <motion.div
-            initial={{ y: 0 }}
-            animate={{ y: [0, -10, 0] }}
-            transition={{ repeat: Infinity, duration: 1.2, ease: "easeInOut" }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: showGlimpse ? 1 : 0 }}
+            transition={{ delay: .5 }}
+            className="mt-8 space-y-6"
           >
-            <ArrowIcon />
+            <div className="flex flex-col md:flex-row gap-8 items-center">
+              <Image
+                src="/IMG_0418.jpg"
+                alt="Tanzil Hussain"
+                width={180}
+                height={200}
+                className="w-40 h-40 md:w-48 md:h-48 rounded-xl object-cover shadow-lg"
+              />
+              <div className="prose prose-lg text-left">
+                <p>
+                  I'm studying <span className="text-purple-600 font-semibold">Artificial Intelligence & Business</span> at USC,
+                  and I'm passionate about building AI-driven, user-centric innovations.
+                </p>
+                <p>
+                  I also love photography, sightseeing, flea markets, slam poetry, and butterfly watching.
+                </p>
+                <a
+                  href="https://www.linkedin.com/in/tanzilhussain/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-purple-600 font-semibold hover:underline"
+                >
+                  Let's connect!
+                </a>{" "}
+                🦋
+              </div>
+            </div>
           </motion.div>
-        </motion.div>
-      )}
 
-      {/* Current Pursuits Section */}
-      <div id="current-pursuits-title" className="mt-[100vh] mb-32 text-gray-600">
-        <h2
-          style={{
-            color,
-            opacity: Math.min(1, scrollY / 50),
-            transition: "opacity 0.3s ease-in-out, color 0.3s ease-in-out",
-          }}
-          className="absolute left-20 text-9xl font-bold text-center font-vollkorn transition-all duration-500"
-        >
-          current pursuits
-        </h2>
+          {/* Tech Toolkit Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.5 }}
+            className="mt-16"
+          >
+            <h2 className="text-2xl md:text-3xl font-bold mb-8 text-gray-900">Technical Toolkit</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {currentFocus.map((item, index) => (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 2}}
+                  className="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow"
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="p-3 bg-purple-100 rounded-lg">
+                      <item.icon className="w-6 h-6 text-purple-600" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-lg text-gray-900">{item.title}</h3>
+                      <p className="text-gray-600">{item.description}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Timeline Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 2 }}
+            className="mt-16"
+          >
+            <h2 className="text-2xl md:text-3xl font-bold mb-8 text-gray-900">Recent Highlights</h2>
+            <div className="space-y-8">
+              {[2025, 2024, 2023].map((year) => (
+                <div key={year} className="relative">
+                  <div className="absolute left-0 top-0 w-px h-full bg-purple-200" />
+                  <div className="pl-8 relative">
+                    <div className="absolute left-0 top-2 w-4 h-4 rounded-full bg-purple-100 border-2 border-purple-600" />
+                    <h3 className="text-xl font-semibold text-purple-600">{year}</h3>
+                    <p className="mt-2 text-gray-600">
+                    {year === 2025 && 
+                      "Currently building innovative AI-driven solutions, focusing on product development and data analytics applications."
+                    }
+                    {year === 2024 && 
+                      "Led multiple successful client engagement projects at Bank of America, focusing on financial technology solutions and improving customer experience in the financial services industry."
+                    }
+                    {year === 2023 && 
+                      "Worked on impactful healthcare technology solutions at Cartogram, contributing to the development of innovative tools for the healthcare sector."
+                    }
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Footer */}
+        <footer className="mt-10 w-full text-center py-10 text-gray-700">
+          <p className="text-sm underline">
+            <a href="https://github.com/tanzilhussain/tanzils-website">
+              &copy; {new Date().getFullYear()} Tanzil Hussain. Built with ❤️ using Next.js, Tailwind CSS, and TypeScript.
+            </a>
+          </p>
+        </footer>
       </div>
-
-      <div className="mt-16 px-10 w-full text-gray-800 space-y-16">
-        <div className="flex items-center space-x-10">
-          <Image
-            src="/hacksc.png"
-            alt="HackSC"
-            width={450}
-            height={150}
-            className="w-[450px] h-[150px] rounded-lg shadow-md"
-          />
-          <div>
-            <h3 className="text-5xl text-right font-bold text-black font-vollkorn">experience coordinator @ hackSC</h3>
-            <p className="text-2xl text-right mt-4 leading-relaxed">
-              This semester, I&apos;m a part of the team planning USC&apos;s premier hackathon, HackSC-X, SoCal Tech week, and many other events to promote creative problem solving through technology.
-            </p>
-          </div>
-        </div>
-
-        <div className="flex items-center space-x-10">
-          <div>
-            <h3 className="text-5xl text-left font-bold text-black font-vollkorn"> personal projects @ USC</h3>
-            <p className="text-2xl text-left mt-4 leading-relaxed">
-              I am currently involved in several research projects focused on applying artificial intelligence and data science to real-world challenges and building practical tools that make a difference. Stay tuned for updates!
-            </p>
-          </div>
-          <Image
-            src="/ai pic.jpg"
-            alt="personal projects"
-            width={450}
-            height={150}
-            className="w-[450px] h-[150px] rounded-lg shadow-md"
-          />
-        </div>
-
-        <div className="flex items-center space-x-10">
-          <Image
-            src="/upskilling.jpg"
-            alt="upskilling"
-            width={450}
-            height={150}
-            className="w-[450px] h-[150px] rounded-lg shadow-md"
-          />
-          <div>
-            <h3 className="text-5xl text-right font-bold text-black font-vollkorn">upskilling @ home</h3>
-            <p className="text-2xl text-right mt-4 leading-relaxed">
-              To continuously grow, I’m upskilling by mastering Power BI for data visualization and deepening my knowledge in machine learning and AI.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Footer */}
-      <footer className="mt-10 w-full text-center py-10 text-black">
-        <p className="text-1xl underline">
-          <a href="https://github.com/tanzilhussain/tanzils-website">
-            &copy; {new Date().getFullYear()} Tanzil Hussain. Built with ❤️ using Next.js, Tailwind CSS, and TypeScript.
-          </a>
-        </p>
-      </footer>
-    </div>
     </>
   );
 } 
