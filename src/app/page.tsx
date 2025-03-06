@@ -190,7 +190,7 @@ export default function HomePage() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: showGlimpse ? 1 : 0 }}
-            transition={{ delay: .5 }}
+            transition={{ delay: 0.5 }}
             className="mt-8 space-y-6"
           >
             <div className="flex flex-col md:flex-row gap-8 items-center">
@@ -201,12 +201,12 @@ export default function HomePage() {
                 height={200}
                 className="w-40 h-40 md:w-48 md:h-48 rounded-xl object-cover shadow-lg"
               />
-              <div className="prose prose-lg text-left">
-                <p>
+              <div className="prose prose-lg text-left opacity-100">
+                <p className="opacity-100">
                   I&apos;m studying <span className="text-purple-600 font-semibold">Artificial Intelligence & Business</span> at USC,
                   and I&apos;m passionate about building AI-driven, user-centric innovations.
                 </p>
-                <p>
+                <p className="opacity-100">
                   I also love photography, sightseeing, flea markets, slam poetry, and butterfly watching.
                 </p>
                 <a
@@ -221,6 +221,7 @@ export default function HomePage() {
               </div>
             </div>
           </motion.div>
+
 
           {/* Tech Toolkit Section */}
           <motion.div
