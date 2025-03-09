@@ -163,7 +163,7 @@ export default function MyStory() {
                   Over time, I developed a passion for <span className="text-primary font-semibold text-purple-700">bridging the gap between business and technology</span>.
                 </p>
                 <p>
-                  From leading initiatives in DECA to interning at tech and financial firms, I&apos;ve gained experience in
+                  From leading initiatives in non-profit organizations to interning at tech and financial firms, I&apos;ve gained experience in
                   <span className="text-primary font-semibold text-purple-700"> product strategy, data-driven decision-making, and market innovation</span>.
                 </p>
                 <p>
