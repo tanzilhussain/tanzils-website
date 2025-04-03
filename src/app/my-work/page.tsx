@@ -23,6 +23,7 @@ export default function MyWork() {
       description:
         "At Bank of America, I led client engagement efforts, educating over 30 customers weekly on digital banking solutions, which boosted adoption by 25%. I also provided tailored support in resolving technical issues, ultimately improving customer satisfaction by 20%.",
       image: "/bofa.jpg", // Ensure the path is correct
+      link: "https://drive.google.com/file/d/1AOASJbabDlakfZFIj2zs8Lozq6WXwnld/view?usp=sharing",
       date: "Summer '24", // Added date for this project
     },
     {
