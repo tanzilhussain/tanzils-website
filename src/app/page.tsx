@@ -93,9 +93,9 @@ export default function HomePage() {
               <Link href="/my-work" className="hover:text-black text-xl">
                 my work
               </Link>
-              <Link href="/on-the-side" className="hover:text-black text-xl">
+              {/* <Link href="/on-the-side" className="hover:text-black text-xl">
                 (on the side)
-              </Link>
+              </Link> */}
               <Link href="/my-story" className="hover:text-black text-xl">
                 my story
               </Link>
@@ -172,7 +172,7 @@ export default function HomePage() {
         {/* Hero Section */}
         <div className="max-w-4xl mx-auto mt-32 px-4">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-gray-900">
-            hi, i&apos;m tanzil hussain— <br />a(n){" "}
+            hello, i'm tanzil hussain– <br />a(n){" "}
             <AnimatePresence mode="wait">
               <motion.span
                 key={roles[roleIndex]}
@@ -203,7 +203,7 @@ export default function HomePage() {
               />
               <div className="prose prose-lg text-left opacity-100">
                 <p className="opacity-100">
-                  I&apos;m studying <span className="text-purple-600 font-semibold">Artificial Intelligence & Business</span> at USC,
+                  I&apos;m studying <span className="text-purple-600 font-semibold">Artificial Intelligence for Business</span> at USC,
                   and I&apos;m passionate about building AI-driven, user-centric innovations.
                 </p>
                 <p className="opacity-100">

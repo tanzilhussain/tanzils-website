@@ -75,9 +75,9 @@ export default function MyWork() {
               <Link href="/my-work" className="hover:text-black text-xl">
                 my work
               </Link>
-              <Link href="/on-the-side" className="hover:text-black text-xl">
+              {/* <Link href="/on-the-side" className="hover:text-black text-xl">
                 (on the side)
-              </Link>
+              </Link> */}
               <Link href="/my-story" className="hover:text-black text-xl">
                 my story
               </Link>
