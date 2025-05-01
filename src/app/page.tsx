@@ -172,7 +172,7 @@ export default function HomePage() {
         {/* Hero Section */}
         <div className="max-w-4xl mx-auto mt-32 px-4">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-gray-900">
-            hello, i'm tanzil hussain– <br />a(n){" "}
+            hello, i&apos;m tanzil hussain– <br />a(n){" "}
             <AnimatePresence mode="wait">
               <motion.span
                 key={roles[roleIndex]}
@@ -269,16 +269,17 @@ export default function HomePage() {
                   <div className="pl-8 relative">
                     <div className="absolute left-0 top-2 w-4 h-4 rounded-full bg-purple-100 border-2 border-purple-600" />
                     <h3 className="text-xl font-semibold text-purple-600">{year}</h3>
-                    <p className="mt-2 text-gray-600">
+                    <p className="mt-2 text-black-600">
                     {year === 2025 && 
-                      "Currently building innovative AI-driven solutions, focusing on product development and data analytics applications."
+                      "Exploring sustainable AI through research on energy-efficient machine learning models, while contributing to a USC-Amazon project focused on optimizing last-mile delivery. Also self-learning advanced data science tools like scikit-learn, pandas, and SQL to strengthen real-world analytics skills."
                     }
                     {year === 2024 && 
-                      "Led multiple successful client engagement projects at Bank of America, focusing on financial technology solutions and improving customer experience in the financial services industry."
+                      "At Bank of America, led digital banking adoption initiatives, resolving 30+ technical issues monthly and delivering financial literacy workshops to 100+ clients through the Better Money Habits® program."
                     }
                     {year === 2023 && 
-                      "Worked on impactful healthcare technology solutions at Cartogram, contributing to the development of innovative tools for the healthcare sector."
+                      "At Cartogram, contributed to product strategy for a healthcare wayfinding platform by analyzing user behavior data and conducting market research to enhance usability and client satisfaction."
                     }
+
                     </p>
                   </div>
                 </div>
