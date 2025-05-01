@@ -271,7 +271,7 @@ export default function HomePage() {
                     <h3 className="text-xl font-semibold text-purple-600">{year}</h3>
                     <p className="mt-2 text-black-600">
                     {year === 2025 && 
-                      "Exploring sustainable AI through research on energy-efficient machine learning models, while contributing to a USC-Amazon project focused on optimizing last-mile delivery. Also self-learning advanced data science tools like scikit-learn, pandas, and SQL to strengthen real-world analytics skills."
+                      "Exploring sustainable AI through research on energy-efficient machine learning models. Also self-learning advanced data science tools like scikit-learn, pandas, and SQL to strengthen real-world analytics skills."
                     }
                     {year === 2024 && 
                       "At Bank of America, led digital banking adoption initiatives, resolving 30+ technical issues monthly and delivering financial literacy workshops to 100+ clients through the Better Money Habits® program."
