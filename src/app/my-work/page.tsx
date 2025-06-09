@@ -10,6 +10,13 @@ export default function MyWork() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const projects = [
+      {
+      title: "Automus Consulting AI Intern",
+      description:
+        "Building Automus' AI Products",
+      image: "/automus logo.webp", // Ensure the path is correct
+      date: "Summer '25", // Added date for this project
+    },
     {
       title: "AI Product Management Certification",
       description:
@@ -158,7 +165,7 @@ export default function MyWork() {
           </h1>
         </div>
 
-        {/* Project Panels */}
+        {/* Project Panels Internships */}
         <div className="mt-[200px] w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {projects.map((project, index) => (
             <a
