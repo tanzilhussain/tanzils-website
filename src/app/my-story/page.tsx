@@ -51,7 +51,7 @@ export default function MyStory() {
           {/* Desktop Navigation Links */}
           <div className="hidden md:flex gap-6 text-gray-700">
             <Link href="/my-work" className="hover:text-black text-xl">my work</Link>
-            <Link href="/on-the-side" className="hover:text-black text-xl">(on the side)</Link>
+            {/* <Link href="/on-the-side" className="hover:text-black text-xl">(on the side)</Link> */}
             <Link href="/my-story" className="hover:text-black text-xl">my story</Link>
             {/* Social Media Links */}
             <div className="flex gap-6 mb-1 items-end">

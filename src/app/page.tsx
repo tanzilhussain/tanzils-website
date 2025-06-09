@@ -133,9 +133,9 @@ export default function HomePage() {
               <Link href="/my-work" className="block px-4 py-2 text-gray-700 hover:bg-purple-50">
                 my work
               </Link>
-              <Link href="/on-the-side" className="block px-4 py-2 text-gray-700 hover:bg-purple-50">
+              {/* <Link href="/on-the-side" className="block px-4 py-2 text-gray-700 hover:bg-purple-50">
                 (on the side)
-              </Link>
+              </Link> */}
               <Link href="/my-story" className="block px-4 py-2 text-gray-700 hover:bg-purple-50">
                 my story
               </Link>
