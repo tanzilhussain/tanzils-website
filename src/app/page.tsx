@@ -172,7 +172,7 @@ export default function HomePage() {
         {/* Hero Section */}
         <div className="max-w-4xl mx-auto mt-32 px-4">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-gray-900">
-            hello, i&apos;m tanzil hussain– <br />a(n){" "}
+            hiiii, i&apos;m tanzil hussain– <br />a(n){" "}
             <AnimatePresence mode="wait">
               <motion.span
                 key={roles[roleIndex]}
