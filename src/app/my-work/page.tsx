@@ -10,12 +10,20 @@ export default function MyWork() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const projects = [
-      {
+    {
+      title: "SmartPrompt",
+      description:
+        "Built SmartPrompt, a Chrome extension that gives users insights into their ChatGPT prompt behavior. It tracks prompt history, analyzes tone, verbosity, and repetition, and clusters your most common prompt topics using AI. \n Tech Stack: \n- **Frontend:** JavaScript, HTML/CSS, Chart.js \n- **Backend:** Python (FastAPI) \n- **AI/NLP:** sentence-transformers, KeyBERT, scikit-learn \n- **Storage:** chrome.storage.local, JSONL prompt logs",
+      image: "/smarprompt.png", 
+      link: "https://github.com/tanzilhussain/smartprompt",
+      date: "Summer '25", 
+    },
+    {
       title: "Automus Consulting AI Intern",
       description:
         "Building Automus' AI Products",
-      image: "/automus logo.webp", // Ensure the path is correct
-      date: "Summer '25", // Added date for this project
+      image: "/automus logo.webp", 
+      date: "Summer '25", 
     },
     {
       title: "AI Product Management Certification",
