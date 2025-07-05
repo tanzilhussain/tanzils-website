@@ -8,7 +8,7 @@ import Head from "next/head";
 
 export default function MyWork() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
+  // project list
   const projects = [
     {
       title: "SmartPrompt",
