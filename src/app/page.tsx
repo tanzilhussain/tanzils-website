@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaEnvelope, FaLinkedin, FaGithub, FaBars, FaTimes } from "react-icons/fa";
-import { BarChart2, Database, LineChart, Computer, PieChart, Brain } from "lucide-react";
+import { BarChart2, Database, LineChart, Computer, PieChart, Brain, Code, Cloud, GitBranch } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import Head from "next/head";
@@ -12,34 +12,34 @@ const roles = ["visionary🔮", "traveler✈️", "builder🛠", "designer🎨",
 
 const currentFocus = [
   {
-    icon: Database,
-    title: "Data Management",
-    description: "Working with SQL, MongoDB, and data warehousing solutions for scalable data storage/retrieval",
-  },
-  {
-    icon: BarChart2,
-    title: "Business Intelligence",
-    description: "Creating actionable insights with Power BI, Tableau, and other data viz tools",
-  },
-  {
-    icon: LineChart,
-    title: "Analytics",
-    description: "Performing statistical analysis using Python, R, and advanced Excel to inform data-driven decisions",
+    icon: Code,
+    title: "Full-Stack Development",
+    description: "Building web apps using React, FastAPI, HTML/CSS, and JavaScript",
   },
   {
     icon: Brain,
-    title: "AI Integration",
-    description: "Integrating AI algorithms with traditional analytics to generate enhanced insights",
+    title: "AI & NLP",
+    description: "Working with sentence-transformers and spaCy for semantic analysis",
   },
   {
-    icon: PieChart,
-    title: "Reporting",
-    description: "Building automated, interactive dashboards to track and present key metrics",
+    icon: Database,
+    title: "Data Handling",
+    description: "Using SQL, pandas, and MongoDB to process, analyze, and store structured and unstructured data",
   },
   {
-    icon: Computer,
-    title: "Software Development",
-    description: "Building apps using HTML/CSS, JS, React, and other modern technologies",
+    icon: BarChart2,
+    title: "Analytics & Visualization",
+    description: "Creating interactive dashboards with Chart.js, Python, and Excel to uncover user insights",
+  },
+  {
+    icon: Cloud,
+    title: "Cloud & APIs",
+    description: "Deploying projects with AWS, building REST APIs with FastAPI, and integrating backend services",
+  },
+  {
+    icon: GitBranch,
+    title: "Version Control",
+    description: "Managing collaborative codebases with Git and GitHub using branches, commits, and pull requests",
   },
 ];
 
