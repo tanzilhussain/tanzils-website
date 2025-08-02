@@ -8,16 +8,10 @@ import Head from "next/head";
 
 export default function MyWork() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState("internships");
 
-  const projects = [
-    {
-      title: "SmartPrompt",
-      description:
-        "Built SmartPrompt, a Chrome extension that gives users insights into their ChatGPT prompt behavior. It tracks prompt history, analyzes tone, verbosity, and repetition, and clusters your most common prompt topics using AI. \n Tech Stack: \n- **Frontend:** JavaScript, HTML/CSS, Chart.js \n- **Backend:** Python (FastAPI) \n- **AI/NLP:** sentence-transformers, KeyBERT, scikit-learn \n- **Storage:** chrome.storage.local, JSONL prompt logs",
-      image: "/smarprompt.png", 
-      link: "https://github.com/tanzilhussain/smartprompt",
-      date: "Summer '25", 
-    },
+  // project list
+  const internships = [
     {
       title: "Automus Consulting AI Intern",
       description:
@@ -26,39 +20,61 @@ export default function MyWork() {
       date: "Summer '25", // Added date for this project
     },
     {
-      title: "AI Product Management Certification",
+      title: "Automus Consulting AI Engineer Intern",
       description:
-        "I gained experience in ideating, managing, and delivering AI products, from initial concept to MVP, while mastering the AI product development lifecycle. Additionally, I refined my ability to strategically align AI solutions with business objectives to ensure maximum impact.",
-      image: "/aipmcert.png", // Ensure the path is correct
-      link: "https://maven.com/certificate/jvgLkeCZ",
-      date: "Fall '24", // Added date for this project
+        "- Co-built and led development of an AWS-hosted NLP pipeline using RAG for automated summarization, Q&A, and generation of technical design documents.\n- Designed a scalable knowledge base using Bedrock for vector-based semantic search and Aurora to store document metadata and user interaction logs. \n- Accelerated delivery and team coordination by executing Agile sprints, leading daily standups, and managing Jira tasks.",
+      image: "/automus.png", 
+      date: "Summer 2025", 
     },
     {
       title: "Bank of America Financial Center Intern",
       description:
-        "At Bank of America, I led client engagement efforts, educating over 30 customers weekly on digital banking solutions, which boosted adoption by 25%. I also provided tailored support in resolving technical issues, ultimately improving customer satisfaction by 20%.",
+        "- Increased adoption of AI-powered banking tools by analyzing client pain points and guiding ~50 customers weekly.\n- Boosted client satisfaction scores by identifying service gaps and collaborating with staff to improve branch operations.",
       image: "/bofa.jpg", // Ensure the path is correct
       link: "https://drive.google.com/file/d/1AOASJbabDlakfZFIj2zs8Lozq6WXwnld/view?usp=sharing",
-      date: "Summer '24", // Added date for this project
+      date: "Summer 2024", // Added date for this project
     },
     {
-      title: "Cartogram Product Management Intern",
+      title: "Cartogram Product Strategy Intern",
       description:
-        "Managed HubSpot, the CRM system, conducted market research, and created competitor analyses. I also designed user flow diagrams and wireframes, and collaborated with the engineering team to refine the product based on client feedback, improving usability and engagement.",
+        "- Advocated for product adoption by creating technical explainers and blogs that translated complex features into clear value.\n- Informed product improvement by conducting market research, identifying user needs, and guiding design and engineering.",
       image: "/cartogram.png", // Ensure the path is correct
       link: "http://165.232.159.91/wordpress/White-Paper-Why-Wayfinding-is-Essential-to-Healthcare-Growth.pdf",
-      date: "Summer '23", // Added date for this project
-    },
-    {
-      title: "Case Competition Projects",
-      description:
-        "I refined my problem-solving skills by developing solutions for case studies and conducting operations research, including a paper on AI-driven hyper-personalization. These experiences honed my ability to align business strategies with emerging technological trends.",
-      image: "/deca.jpg", // Ensure the path is correct
-      link: "https://drive.google.com/file/d/1noWFgUb7cSnLxSdYohozpCGTg5zjDEhV/view?usp=sharing",
-      date: "Fall '20—Spring '24", // Added date for this project
+      date: "Summer 2023", // Added date for this project
     },
   ];
 
+  const projects = [
+    {
+      title: "Transaction Fraud Risk Analyzer",
+      description:
+        "Built an interactive fraud detection dashboard that explains XGBoost predictions using SHAP. Designed to help users understand why transactions are flagged by visualizing feature contributions and modeling risky behavior patterns.\n- Tech Stack: Model: XGBoost (precision-recall optimized)\n- Explainability: SHAP (global + per-transaction)\n- Frontend: Streamlit\n- Backend: Python (modular)\n- Data: Synthetic financial transactions (Kaggle)",
+      image: "/transaction.png", 
+      link: "https://github.com/tanzilhussain/transaction-fraud-risk-analyzer",
+    },
+    {
+      title: "SmartPrompt",
+      description:
+        "Built SmartPrompt, a Chrome extension that gives users insights into their ChatGPT prompt behavior. It tracks prompt history, analyzes tone, verbosity, and repetition, and clusters your most common prompt topics using AI. \nTech Stack: \n- Frontend: JavaScript, HTML/CSS, Chart.js \n- Backend: Python (FastAPI) \n- AI/NLP: sentence-transformers, spaCy, KeyBERT \n- Storage: chrome.storage.local, JSONL logs",
+      image: "/smartprompt.png", 
+      link: "https://github.com/tanzilhussain/smartprompt",
+    },
+    {
+      title: "AI Product Management Certification",
+      description:
+        "Gained hands-on experience managing AI products from ideation to MVP. Learned to navigate the AI product lifecycle and align technical solutions with business goals for real-world impact.\nFocus Areas: AI strategy, product-market fit, lifecycle management, stakeholder alignment",
+      image: "/aipmcert.png", // Ensure the path is correct
+      link: "https://maven.com/certificate/jvgLkeCZ",
+    },
+    {
+      title: "Case Competitions",
+      description:
+        "Solved business problems through case studies and operations research, including a paper on AI-driven hyper-personalization in hospitality. Strengthened my ability to merge data insights with strategic decision-making.\nFocus Areas: AI applications, market analysis, business strategy, personalization systems",
+      image: "/deca.jpg", // Ensure the path is correct
+      link: "https://drive.google.com/file/d/1noWFgUb7cSnLxSdYohozpCGTg5zjDEhV/view?usp=sharing",
+    },
+  ];
+  
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
@@ -94,7 +110,7 @@ export default function MyWork() {
                 (on the side)
               </Link> */}
               <Link href="/my-story" className="hover:text-black text-xl">
-                my story
+                about me
               </Link>
               <div className="flex gap-6 mb-1 items-end">
                 <Link
@@ -134,7 +150,7 @@ export default function MyWork() {
                 (on the side)
               </Link> */}
               <Link href="/my-story" className="block px-4 py-2 text-gray-700 hover:bg-purple-50">
-                my story
+                about me
               </Link>
               <div className="flex gap-4 px-4 py-2">
                 <Link
@@ -167,55 +183,94 @@ export default function MyWork() {
         </nav>
 
         {/* Page Title */}
-        <div className="absolute left-4 md:left-20 top-[100px]">
+        <div className="pt-28">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 text-left">
             my work (click to explore!)
           </h1>
         </div>
 
-        {/* Project Panels Internships */}
-        <div className="mt-[200px] w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {projects.map((project, index) => (
-            <a
-              key={index}
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block group"
-            >
-              <div className="flex flex-col bg-white rounded-xl shadow-lg p-4 hover:shadow-xl transition-shadow duration-300 h-[450px]">
-                {/* Date Title */}
-                <h1 className="text-xl md:text-2xl font-semibold text-purple-700 text-center mb-4">
-                  {project.date}
-                </h1>
-
-                {/* Project Image */}
-                <div className="w-full h-40 mb-4">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    width={300}
-                    height={150}
-                    className={`w-full h-full rounded-lg ${
-                      index === 0 || index === 3 ? "object-cover" : "object-contain"
-                    }`}
-                  />
-                </div>
-
-                {/* Project Details */}
-                <div className="text-left flex-1 overflow-y-auto">
-                  <h2 className="text-xl font-bold text-gray-900 mb-1">{project.title}</h2>
-                  <p className="text-sm text-gray-700">
-                    <span className="text-purple-700">—————————————————</span>
-                    <br />
-                    {project.description}
-                  </p>
-                </div>
-              </div>
-            </a>
-          ))}
+        <br></br>
+        {/* Tab Switcher */}
+        <div className="mt-6 flex gap-4 justify-center">
+          <button
+            onClick={() => setActiveTab("internships")}
+            className={`px-6 py-3 rounded-t-lg text-sm font-semibold transition ${
+              activeTab === "internships" ? "bg-purple-600 text-white" : "bg-gray-200 text-gray-800"
+            }`}
+          >
+            Internships
+          </button>
+          <button
+            onClick={() => setActiveTab("projects")}
+            className={`px-6 py-3 rounded-t-lg text-sm font-semibold transition ${
+              activeTab === "projects" ? "bg-purple-600 text-white" : "bg-gray-200 text-gray-800"
+            }`}
+          >
+            Projects
+          </button>
         </div>
 
+        {/* Content Panels */}
+        {activeTab === "internships" && (
+          <div className="mt-6 w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {internships.map((item, index) => (
+              <a
+                key={index}
+                href={item.link || "#"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block group"
+              >
+                <div className="flex flex-col bg-white rounded-xl shadow-lg p-4 hover:shadow-xl transition-shadow duration-300 h-[400px]">
+                  <h1 className="text-xl font-semibold text-purple-700 text-center mb-4">{item.date}</h1>
+                  <div className="w-full h-40 mb-4">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      width={300}
+                      height={150}
+                      className="w-full h-full rounded-lg object-contain"
+                    />
+                  </div>
+                  <div className="text-left flex-1 overflow-y-auto">
+                    <h2 className="text-l font-bold text-gray-900 mb-1">{item.title}</h2>
+                    <p className="text-sm text-gray-700 whitespace-pre-wrap">{item.description}</p>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        )}
+
+        {activeTab === "projects" && (
+          <div className="mt-6 w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {projects.map((item, index) => (
+              <a
+                key={index}
+                href={item.link || "#"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block group"
+              >
+                <div className="flex flex-col bg-white rounded-xl shadow-lg p-4 hover:shadow-xl transition-shadow duration-300 h-[450px]">
+                  <div className="w-full h-40 mb-4">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      width={300}
+                      height={150}
+                      className="w-full h-full rounded-lg object-contain"
+                    />
+                  </div>
+                  <div className="text-left flex-1 overflow-y-auto">
+                    <h2 className="text-xl font-bold text-gray-900 mb-1">{item.title}</h2>
+                    <p className="text-sm text-gray-700 whitespace-pre-wrap">{item.description}</p>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        )}
         {/* Footer */}
         <footer className="mt-10 w-full text-center py-10 text-black">
           <p className="text-sm underline">
@@ -225,6 +280,7 @@ export default function MyWork() {
           </p>
         </footer>
       </div>
+
     </>
   );
 }

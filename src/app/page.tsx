@@ -3,43 +3,45 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaEnvelope, FaLinkedin, FaGithub, FaBars, FaTimes } from "react-icons/fa";
-import { BarChart2, Database, LineChart, Computer, PieChart, Brain } from "lucide-react";
+import { BarChart2, Database, Brain, Code, Cloud, Users } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import Head from "next/head";
 
 const roles = ["visionary🔮", "traveler✈️", "builder🛠", "designer🎨", "strategist🧠", "dreamer🌙", "analyst 💭"];
 
+
+
 const currentFocus = [
   {
-    icon: Database,
-    title: "Data Management",
-    description: "Working with SQL, MongoDB, and data warehousing solutions for scalable data storage/retrieval",
-  },
-  {
-    icon: BarChart2,
-    title: "Business Intelligence",
-    description: "Creating actionable insights with Power BI, Tableau, and other data viz tools",
-  },
-  {
-    icon: LineChart,
-    title: "Analytics",
-    description: "Performing statistical analysis using Python, R, and advanced Excel to inform data-driven decisions",
+    icon: Code,
+    title: "Full-Stack Development",
+    description: "Building web apps with React, FastAPI, TypeScript, HTML/CSS, and Flask",
   },
   {
     icon: Brain,
-    title: "AI Integration",
-    description: "Integrating AI algorithms with traditional analytics to generate enhanced insights",
+    title: "AI & NLP",
+    description: "Using sentence-transformers and spaCy for text analysis and semantic search tasks",
   },
   {
-    icon: PieChart,
-    title: "Reporting",
-    description: "Building automated, interactive dashboards to track and present key metrics",
+    icon: Database,
+    title: "Data Engineering",
+    description: "Processing structured data with pandas, SQL, PostgreSQL, Supabase, and MySQL systems",
   },
   {
-    icon: Computer,
-    title: "Software Development",
-    description: "Building apps using HTML/CSS, JS, React, and other modern technologies",
+    icon: BarChart2,
+    title: "Analytics & Visualization",
+    description: "Visualizing insights using SHAP, Power BI, Tableau, Excel, and Sheets",
+  },
+  {
+    icon: Cloud,
+    title: "Cloud & APIs",
+    description: "Deploying apps with AWS and building backend REST APIs using FastAPI framework",
+  },
+  {
+    icon: Users,
+    title: "Management",
+    description: "Leading teams, scoping features, coordinating workflows, to meet product goals",
   },
 ];
 
@@ -97,7 +99,7 @@ export default function HomePage() {
                 (on the side)
               </Link> */}
               <Link href="/my-story" className="hover:text-black text-xl">
-                my story
+                about me
               </Link>
               <div className="flex gap-6 mb-1 items-end">
                 <Link
@@ -137,7 +139,7 @@ export default function HomePage() {
                 (on the side)
               </Link> */}
               <Link href="/my-story" className="block px-4 py-2 text-gray-700 hover:bg-purple-50">
-                my story
+                about me
               </Link>
               <div className="flex gap-4 px-4 py-2">
                 <Link
@@ -191,7 +193,7 @@ export default function HomePage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: showGlimpse ? 1 : 0 }}
             transition={{ delay: 0.5 }}
-            className="mt-8 space-y-6"
+            className="mt-16 space-y-6"
           >
             <div className="flex flex-col md:flex-row gap-8 items-center">
               <Image
@@ -230,7 +232,7 @@ export default function HomePage() {
             transition={{ delay: 1.5 }}
             className="mt-16"
           >
-            <h2 className="text-2xl md:text-3xl font-bold mb-8 text-gray-900">Technical Toolkit</h2>
+            <h2 className="text-2xl md:text-3xl font-bold mb-8 text-gray-900">Skills & Toolkit</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {currentFocus.map((item) => (
                 <motion.div
@@ -270,14 +272,14 @@ export default function HomePage() {
                     <div className="absolute left-0 top-2 w-4 h-4 rounded-full bg-purple-100 border-2 border-purple-600" />
                     <h3 className="text-xl font-semibold text-purple-600">{year}</h3>
                     <p className="mt-2 text-black-600">
-                    {year === 2025 && 
-                      "Exploring sustainable AI through research on energy-efficient machine learning models. Also self-learning advanced data science tools like scikit-learn, pandas, and SQL to strengthen real-world analytics skills."
+                    {year === 2025 &&
+                     "Interned at Automus Consulting, leading RAG-based AI development for enterprise document Q&A and co-authoring research report on agentic AI in international development with Salesforce, Thunder, and USC's Neely Center."
                     }
                     {year === 2024 && 
-                      "At Bank of America, led digital banking adoption initiatives, resolving 30+ technical issues monthly and delivering financial literacy workshops to 100+ clients through the Better Money Habits® program."
+                      "Interned at Bank of America, increased adoption of AI-powered banking tools and boosted client satisfaction scores through optimizing branch operations."
                     }
                     {year === 2023 && 
-                      "At Cartogram, contributed to product strategy for a healthcare wayfinding platform by analyzing user behavior data and conducting market research to enhance usability and client satisfaction."
+                      "Interned at Cartogram, contributed to product strategy for a healthcare wayfinding platform by analyzing user behavior data and conducting market research to enhance usability and client satisfaction."
                     }
 
                     </p>

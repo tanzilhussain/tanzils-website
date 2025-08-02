@@ -33,7 +33,7 @@ export default function MyStory() {
   return (
     <>
       <Head>
-        <title>My Story - Tanzil Hussain</title>
+        <title>about me - Tanzil Hussain</title>
         <meta name="description" content="Learn more about Tanzil Hussain's journey and experiences." />
       </Head>
       
@@ -52,7 +52,7 @@ export default function MyStory() {
           <div className="hidden md:flex gap-6 text-gray-700">
             <Link href="/my-work" className="hover:text-black text-xl">my work</Link>
             {/* <Link href="/on-the-side" className="hover:text-black text-xl">(on the side)</Link> */}
-            <Link href="/my-story" className="hover:text-black text-xl">my story</Link>
+            <Link href="/my-story" className="hover:text-black text-xl">about me</Link>
             {/* Social Media Links */}
             <div className="flex gap-6 mb-1 items-end">
               <Link href="mailto:tanzilhannah@gmail.com" target="_blank" className="hover:text-black text-xl">
@@ -77,7 +77,7 @@ export default function MyStory() {
                 (on the side)
               </Link> */}
               <Link href="/my-story" className="block px-4 py-2 text-gray-700 hover:bg-purple-50">
-                my story
+                about me
               </Link>
               <div className="flex gap-4 px-4 py-2">
                 <Link
@@ -110,12 +110,11 @@ export default function MyStory() {
       </nav>
 
       {/* Page Title */}
-      <div className="absolute left-4 md:left-20 top-[120px]">
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 text-left">
-          my story
+      <div className="absolute top-[120px] left-1/2 transform -translate-x-1/2 text-center">
+        <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
+          about me
         </h1>
       </div>
-
       
       {/* Page Content */}
       <motion.div 
@@ -136,7 +135,7 @@ export default function MyStory() {
               className="w-full max-w-[300px] mx-auto rounded-2xl shadow-lg object-cover" 
             >
               <Image
-                src="/headshot.png"
+                src="/headshot.jpg"
                 alt="Profile"
                 width={400}
                 height={400}
@@ -155,20 +154,18 @@ export default function MyStory() {
               >
                 <p>
                   Hello! Thanks for being here :) My name is Tanzil, and I&apos;m a student at the
-                  <span className="text-primary font-semibold text-purple-700"> University of Southern California</span>, studying
+                  University of Southern California (fight on! ✌️), where I&apos;m pursuing a major in 
                   <span className="text-primary font-semibold text-purple-700"> Artificial Intelligence for Business</span>.
                 </p>
                 <p>
-                  Growing up in Seattle, WA, surrounded by influential tech companies, sparked my fascination with technology.
-                  Over time, I developed a passion for <span className="text-primary font-semibold text-purple-700">bridging the gap between business and technology</span>.
+                  I’m originally from Seattle, WA, where growing up around tech innovation inspired my passion for the intersection of technology and business. Paired together, my background in both fields serves as an asset in translating technical expertise into business strategy, and vice versa.
                 </p>
                 <p>
-                  From leading initiatives in non-profit organizations to interning at tech and financial firms, I&apos;ve gained experience in
-                  <span className="text-primary font-semibold text-purple-700"> product strategy, data-driven decision-making, and market innovation</span>.
+                   I’m especially interested in 
+                  <span className="text-primary font-semibold text-purple-700"> product management/strategy, security, and engineering</span>, and I hope to tie these interests together in a future internship/full-time role.
                 </p>
                 <p>
-                  I&apos;m especially interested in <span className="text-primary font-semibold text-purple-700">data analytics, product management, startups, and AI-driven solutions</span>.
-                  If you&apos;re interested in building something impactful together, 
+                  Whether I’m building tools, analyzing data, or exploring emerging tech, I’m driven by a desire to create impactful solutions that serve both people and progress. In my free time, I love to watch thriller movies, visit flea markets, and try my hand at photography and photo editing!
                 </p>
                 {/* LinkedIn CTA */}
                 <p>
