@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaEnvelope, FaLinkedin, FaGithub, FaBars, FaTimes } from "react-icons/fa";
-import { BarChart2, Database, LineChart, Computer, PieChart, Brain, Code, Cloud, GitBranch, Users } from "lucide-react";
+import { BarChart2, Database, Brain, Code, Cloud, Users } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import Head from "next/head";
