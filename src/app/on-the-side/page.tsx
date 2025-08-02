@@ -61,7 +61,7 @@ const OnTheSide = () => {
                 (on the side)
               </Link>
               <Link href="/my-story" className="hover:text-black text-xl">
-                my story
+                about me
               </Link>
               <div className="flex gap-6 mb-1 items-end">
                 <Link
@@ -101,7 +101,7 @@ const OnTheSide = () => {
                 (on the side)
               </Link>
               <Link href="/my-story" className="block px-4 py-2 text-gray-700 hover:bg-purple-50">
-                my story
+                about me
               </Link>
               <div className="flex gap-4 px-4 py-2">
                 <Link
