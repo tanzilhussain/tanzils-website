@@ -15,7 +15,7 @@ export default function MyWork() {
     {
       title: "Automus Consulting AI Intern",
       description:
-        "Building Automus' AI Products",
+        "- Co-built and led development of an AWS-hosted NLP pipeline using RAG for automated summarization, Q&A, and generation of technical design documents.\n- Designed a scalable knowledge base using Bedrock for vector-based semantic search and Aurora to store document metadata and user interaction logs. \n- Accelerated delivery and team coordination by executing Agile sprints, leading daily standups, and managing Jira tasks.",
       image: "/automus.png", // Ensure the path is correct
       date: "Summer '25", // Added date for this project
     },
