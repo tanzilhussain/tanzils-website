@@ -16,7 +16,7 @@ export default function MyWork() {
       title: "Automus Consulting AI Intern",
       description:
         "Building Automus' AI Products",
-      image: "/automus logo.webp", // Ensure the path is correct
+      image: "/automus.png", // Ensure the path is correct
       date: "Summer '25", // Added date for this project
     },
     {
