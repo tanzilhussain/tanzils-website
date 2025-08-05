@@ -32,7 +32,7 @@ export default function MyWork() {
       description:
         "- Advocated for product adoption by creating technical explainers and blogs that translated complex features into clear value.\n- Informed product improvement by conducting market research, identifying user needs, and guiding design and engineering.",
       image: "/cartogram.png", // Ensure the path is correct
-      link: "http://165.232.159.91/wordpress/White-Paper-Why-Wayfinding-is-Essential-to-Healthcare-Growth.pdf",
+      link: "https://drive.google.com/file/d/1QB-XkX7OmSYa6pSEd8FgGU0YlClBN4OA/view?usp=sharing",
       date: "Summer 2023", // Added date for this project
     },
   ];
