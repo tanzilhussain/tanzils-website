@@ -153,7 +153,7 @@ export default function MyWork() {
         {/* Title */}
         <div className="pt-28">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 text-left">
-            my work (click a button to explore)
+            my work
           </h1>
         </div>
 
