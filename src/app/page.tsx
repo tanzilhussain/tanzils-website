@@ -201,9 +201,9 @@ export default function HomePage() {
                 alt="Tanzil Hussain"
                 width={180}
                 height={200}
-                className="w-40 h-40 md:w-48 md:h-48 rounded-xl object-cover shadow-lg"
+                className="w-40 h-48 md:w-48 md:h-48 rounded-xl object-cover shadow-lg"
               />
-              <div className="prose prose-lg text-left opacity-100">
+              <div className="prose prose-lg text-center md:text-left opacity-100">
                 <p className="opacity-100">
                   I&apos;m studying <span className="text-purple-600 font-semibold">Artificial Intelligence for Business</span> at USC,
                   and I&apos;m passionate about building AI-driven, user-centric innovations.
