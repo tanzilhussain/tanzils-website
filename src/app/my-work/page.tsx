@@ -40,7 +40,7 @@ export default function MyWork() {
       image: "/automus.png",
       date: "Summer 2025",
       actions: [
-        { label: "Letter of Recommendation", href: "https://drive.google.com/file/d/1lkLhh7pyOQXadEdLagQriqpnig9yQ2Ep/view?usp=sharing" },
+        { label: "Letter of Recommendation", href: "https://tinyurl.com/letter-of-rec-tanzil" },
       ],
     },
     {
