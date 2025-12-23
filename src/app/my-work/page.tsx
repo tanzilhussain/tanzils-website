@@ -69,9 +69,23 @@ export default function MyWork() {
 
   const projects: Item[] = [
     {
+      title: "Hotel Pricing AI Engine",
+      description:
+        "Built an AI-powered hotel revenue forecasting engine with Peregrine Consulting as part of a consulting engagement to predict Occupancy Rate, ADR, and RevPAR for hotels in Tokyo. Dataset was constructed using APIs and market research (Google API, Expedia, Google Maps) with features like rating, seasonal rates, competitor density, and distance to transit. Benchmarked multiple models where XGBoost delivered best performance (R² ≈ 0.99) and consistently lowest error across KPIs.\n\n" +
+        "Tech Stack: \n- Models: Linear & Ridge Regression, SVR, MLP, LSTM, Random Forest, LightGBM, XGBoost\n" +
+        "- Evaluation: R², RMSE, MAE, MAPE\n" +
+        "- Visualization: Matplotlib, Seaborn\n" +
+        "- Environment: Python, Jupyter Notebook\n" +
+        "- Data: API-driven + market-researched hotel pricing dataset",
+      image: "/peregrine.png",
+      actions: [
+        { label: "GitHub Repo", href: "https://github.com/tanzilhussain/Peregrine-Consulting-Hotel-Pricing-Engine" },
+      ],
+    },
+    {
       title: "Transaction Fraud Risk Analyzer",
       description:
-        "Built an interactive fraud detection dashboard that explains XGBoost predictions using SHAP. Designed to help users understand why transactions are flagged by visualizing feature contributions and modeling risky behavior patterns.\n- Tech Stack: Model: XGBoost (precision-recall optimized)\n- Explainability: SHAP (global + per-transaction)\n- Frontend: Streamlit\n- Backend: Python (modular)\n- Data: Synthetic financial transactions (Kaggle)",
+        "Built an interactive fraud detection dashboard that explains XGBoost predictions using SHAP. Designed to help users understand why transactions are flagged by visualizing feature contributions and modeling risky behavior patterns.\n\nTech Stack: \n- Model: XGBoost (precision-recall optimized)\n- Explainability: SHAP (global + per-transaction)\n- Frontend: Streamlit\n- Backend: Python (modular)\n- Data: Synthetic financial transactions (Kaggle)",
       image: "/transaction.png",
       actions: [
         { label: "GitHub Repo", href: "https://github.com/tanzilhussain/transaction-fraud-risk-analyzer" },
@@ -80,7 +94,7 @@ export default function MyWork() {
     {
       title: "SmartPrompt",
       description:
-        "Built SmartPrompt, a Chrome extension that gives users insights into their ChatGPT prompt behavior. It tracks prompt history, analyzes tone, verbosity, and repetition, and clusters your most common prompt topics using AI. \nTech Stack: \n- Frontend: JavaScript, HTML/CSS, Chart.js \n- Backend: Python (FastAPI) \n- AI/NLP: sentence-transformers, spaCy, KeyBERT \n- Storage: chrome.storage.local, JSONL logs",
+        "Built SmartPrompt, a Chrome extension that gives users insights into their ChatGPT prompt behavior. It tracks prompt history, analyzes tone, verbosity, and repetition, and clusters your most common prompt topics using AI. \n\nTech Stack: \n- Frontend: JavaScript, HTML/CSS, Chart.js \n- Backend: Python (FastAPI) \n- AI/NLP: sentence-transformers, spaCy, KeyBERT \n- Storage: chrome.storage.local, JSONL logs",
       image: "/smartprompt.png",
       actions: [
         { label: "GitHub Repo", href: "https://github.com/tanzilhussain/smartprompt" },
@@ -96,7 +110,7 @@ export default function MyWork() {
     {
       title: "Case Competitions",
       description:
-        "Solved business problems through case studies and operations research, including a paper on AI-driven hyper-personalization in hospitality. Strengthened my ability to merge data insights with strategic decision-making.\nFocus Areas: AI applications, market analysis, business strategy, personalization systems",
+        "Solved business problems through case studies and operations research, including a paper on AI-driven hyper-personalization in hospitality. Strengthened my ability to merge data insights with strategic decision-making.\n\nFocus Areas: AI applications, market analysis, business strategy, personalization systems",
       image: "/deca.jpg",
       actions: [
         { label: "Research Paper", href: "https://drive.google.com/file/d/1noWFgUb7cSnLxSdYohozpCGTg5zjDEhV/view?usp=sharing" },
