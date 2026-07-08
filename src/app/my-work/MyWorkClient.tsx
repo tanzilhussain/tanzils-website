@@ -19,7 +19,7 @@ type Item = {
 
 const internships: Item[] = [
   {
-    title: "MongoDB — AI Product Management Intern",
+    title: "MongoDB - AI Product Management Intern",
     location: "Palo Alto, CA",
     description:
       "Shipped an AI agent for performance & growth support to 6,000+ employees by identifying a tool gap through analysis of MongoGPT's deprecation and securing HR leadership buy-in to reframe usage data as an employee development need.\n\nDesigned and prototyped an internal guide cataloging 15+ AI tools tailored to business units by translating findings from 10+ cross-functional user interviews into a standardized enablement resource and partnering with 3 engineers on build.",
@@ -27,7 +27,7 @@ const internships: Item[] = [
     tags: ["AI Agents", "Product Management", "Stakeholder Alignment"],
   },
   {
-    title: "USC Builder Hub — Product Engineer",
+    title: "USC Builder Hub - Product Engineer",
     location: "Los Angeles, CA",
     description:
       "Led a 5-person team building PlanUSC, a platform for 21,000+ students to reduce degree and course registration planning friction, by translating student pain points into product features and conducting iterative design reviews.\n\nEngineered a validation engine by unifying 74+ departments' fragmented clearance policies into a single dataset, and by running checks against prerequisites, course conflicts, and degree requirements to power the platform's scheduling logic.",
@@ -35,7 +35,7 @@ const internships: Item[] = [
     tags: ["Product Engineering", "Team Leadership", "PlanUSC"],
   },
   {
-    title: "Automus Consulting — AI Engineer Intern",
+    title: "Automus Consulting - AI Engineer Intern",
     description:
       "Co-built and led development of an AWS-hosted NLP pipeline using RAG for automated summarization, Q&A, and generation of technical design documents.\n\nDesigned a scalable knowledge base using Bedrock for vector-based semantic search and Aurora to store document metadata and user interaction logs.\n\nAccelerated delivery and team coordination by executing Agile sprints, leading daily standups, and managing Jira tasks.",
     image: "/automus.png",
@@ -46,7 +46,7 @@ const internships: Item[] = [
     ],
   },
   {
-    title: "Bank of America — Financial Center Intern",
+    title: "Bank of America - Financial Center Intern",
     description:
       "Increased adoption of AI-powered banking tools by analyzing client pain points and guiding ~50 customers weekly.\n\nBoosted client satisfaction scores by identifying service gaps and collaborating with staff to improve branch operations.",
     image: "/bofa.jpg",
@@ -57,7 +57,7 @@ const internships: Item[] = [
     ],
   },
   {
-    title: "Cartogram — Product Strategy Intern",
+    title: "Cartogram - Product Strategy Intern",
     description:
       "Advocated for product adoption by creating technical explainers and blogs that translated complex features into clear value.\n\nInformed product improvement by conducting market research, identifying user needs, and guiding design and engineering.",
     image: "/cartogram.png",
