@@ -49,14 +49,6 @@ export default function Navbar() {
               />
             </Link>
           ))}
-          <a
-            href="/resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-4 py-1.5 bg-purple-600 text-white text-sm font-semibold rounded-full hover:bg-purple-700 transition-colors duration-200 shadow-sm hover:shadow-md"
-          >
-            Resume ↗
-          </a>
           <div className="flex gap-4 items-center">
             {socialLinks.map(({ href, icon: Icon, label }) => (
               <a
@@ -95,14 +87,6 @@ export default function Navbar() {
                   {label}
                 </Link>
               ))}
-              <a
-                href="/resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-fit px-4 py-1.5 bg-purple-600 text-white text-sm font-semibold rounded-full hover:bg-purple-700 transition-colors duration-200"
-              >
-                Resume ↗
-              </a>
               <div className="flex gap-5 pt-2">
                 {socialLinks.map(({ href, icon: Icon, label }) => (
                   <a

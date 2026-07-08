@@ -10,13 +10,30 @@ type Action = { label: string; href: string };
 type Item = {
   title: string;
   description: string;
-  image: string;
+  image?: string;
   date?: string;
+  location?: string;
   tags?: string[];
   actions?: Action[];
 };
 
 const internships: Item[] = [
+  {
+    title: "MongoDB — AI Product Management Intern",
+    location: "Palo Alto, CA",
+    description:
+      "Shipped an AI agent for performance & growth support to 6,000+ employees by identifying a tool gap through analysis of MongoGPT's deprecation and securing HR leadership buy-in to reframe usage data as an employee development need.\n\nDesigned and prototyped an internal guide cataloging 15+ AI tools tailored to business units by translating findings from 10+ cross-functional user interviews into a standardized enablement resource and partnering with 3 engineers on build.",
+    date: "June 2026 – August 2026",
+    tags: ["AI Agents", "Product Management", "Stakeholder Alignment"],
+  },
+  {
+    title: "USC Builder Hub — Product Engineer",
+    location: "Los Angeles, CA",
+    description:
+      "Led a 5-person team building PlanUSC, a platform for 21,000+ students to reduce degree and course registration planning friction, by translating student pain points into product features and conducting iterative design reviews.\n\nEngineered a validation engine by unifying 74+ departments' fragmented clearance policies into a single dataset, and by running checks against prerequisites, course conflicts, and degree requirements to power the platform's scheduling logic.",
+    date: "May 2026 – Present",
+    tags: ["Product Engineering", "Team Leadership", "PlanUSC"],
+  },
   {
     title: "Automus Consulting — AI Engineer Intern",
     description:
@@ -182,18 +199,23 @@ export default function MyWorkClient() {
                     </span>
                   </div>
                 )}
-                <div className="w-full h-36 mt-4 px-5">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    width={300}
-                    height={144}
-                    className="w-full h-full rounded-xl object-contain"
-                  />
-                </div>
+                {item.image && (
+                  <div className="w-full h-36 mt-4 px-5">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      width={300}
+                      height={144}
+                      className="w-full h-full rounded-xl object-contain"
+                    />
+                  </div>
+                )}
 
-                <div className="flex flex-col flex-1 p-5 gap-3">
-                  <h2 className="text-base font-bold text-gray-900 leading-snug">{item.title}</h2>
+                <div className={`flex flex-col flex-1 p-5 gap-3 ${!item.image ? "mt-2" : ""}`}>
+                  <div>
+                    <h2 className="text-base font-bold text-gray-900 leading-snug">{item.title}</h2>
+                    {item.location && <p className="text-xs text-gray-500 mt-0.5">{item.location}</p>}
+                  </div>
                   <p className="text-sm text-gray-600 leading-relaxed whitespace-pre-wrap">{item.description}</p>
 
                   {item.tags && item.tags.length > 0 && (
