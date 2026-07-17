@@ -23,6 +23,7 @@ const internships: Item[] = [
     location: "Palo Alto, CA",
     description:
       "Shipped an AI agent for performance & growth support to 6,000+ employees by identifying a tool gap through analysis of MongoGPT's deprecation and securing HR leadership buy-in to reframe usage data as an employee development need.\n\nDesigned and prototyped an internal guide cataloging 15+ AI tools tailored to business units by translating findings from 10+ cross-functional user interviews into a standardized enablement resource and partnering with 3 engineers on build.",
+    image: "/mongodb.png",
     date: "June 2026 – August 2026",
     tags: ["AI Agents", "Product Management", "Stakeholder Alignment"],
   },
@@ -31,6 +32,7 @@ const internships: Item[] = [
     location: "Los Angeles, CA",
     description:
       "Led a 5-person team building PlanUSC, a platform for 21,000+ students to reduce degree and course registration planning friction, by translating student pain points into product features and conducting iterative design reviews.\n\nEngineered a validation engine by unifying 74+ departments' fragmented clearance policies into a single dataset, and by running checks against prerequisites, course conflicts, and degree requirements to power the platform's scheduling logic.",
+    image: "/usc-logo.jpg",
     date: "May 2026 – Present",
     tags: ["Product Engineering", "Team Leadership", "PlanUSC"],
   },
