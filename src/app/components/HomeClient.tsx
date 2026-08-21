@@ -11,6 +11,11 @@ const roles = ["visionary🔮", "traveler✈️", "builder🛠", "designer🎨",
 
 const skills = [
   {
+    icon: Users,
+    title: "Product Management",
+    description: "Scoping roadmaps, writing requirements, and leading cross-functional teams to ship features that meet user and business goals",
+  },
+  {
     icon: Code,
     title: "Full-Stack Development",
     description: "Building web apps with React, FastAPI, TypeScript, HTML/CSS, and Flask",
@@ -18,7 +23,7 @@ const skills = [
   {
     icon: Brain,
     title: "AI & NLP",
-    description: "Using sentence-transformers and spaCy for text analysis and semantic search tasks",
+    description: "Building AI agents, RAG pipelines, and automations for semantic search and document Q&A",
   },
   {
     icon: Database,
@@ -35,17 +40,16 @@ const skills = [
     title: "Cloud & APIs",
     description: "Deploying apps with AWS and building backend REST APIs using FastAPI framework",
   },
-  {
-    icon: Users,
-    title: "Management",
-    description: "Leading teams, scoping features, coordinating workflows, to meet product goals",
-  },
 ];
 
 const highlights = [
   {
+    year: 2026,
+    text: "Interned at MongoDB as an AI Product Management Intern, shipping an AI agent for performance & growth support to employees, and led a team as a Product Engineer at USC Builder Hub building PlanUSC for students.",
+  },
+  {
     year: 2025,
-    text: "Interned at Automus Consulting, leading RAG-based AI development for enterprise document Q&A and co-authoring research report on agentic AI in international development with Salesforce, Thunder, and USC's Neely Center.",
+    text: "Interned at Automus Consulting, leading RAG-based AI development for enterprise document Q&A.",
   },
   {
     year: 2024,
