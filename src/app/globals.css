@@ -2,9 +2,56 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ---------------------------------------------------------------
+   Design tokens. Semantic names so every component stays theme
+   agnostic — flipping .dark on <html> reskins the whole site.
+   --------------------------------------------------------------- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --canvas: 250 249 251;        /* warm off-white paper */
+  --canvas-tint: 246 242 252;   /* faint violet wash at page edges */
+  --surface: 255 255 255;
+  --surface-2: 246 244 249;
+  --line: 233 228 240;
+  --line-strong: 219 211 232;
+
+  --ink: 27 21 35;
+  --ink-2: 74 66 86;
+  --ink-3: 122 114 135;
+
+  --accent: 124 58 237;
+  --accent-2: 168 85 247;
+  --accent-3: 236 72 153;
+  --accent-soft: 243 235 255;
+  --accent-ink: 109 40 217;
+
+  --shadow-card: 0 1px 2px rgb(27 21 35 / 0.04), 0 8px 24px -12px rgb(27 21 35 / 0.12);
+  --shadow-lift: 0 2px 4px rgb(27 21 35 / 0.05), 0 20px 40px -16px rgb(88 28 135 / 0.24);
+  --shadow-nav: 0 1px 0 rgb(27 21 35 / 0.04), 0 8px 32px -20px rgb(27 21 35 / 0.3);
+  --glow: 0.5;
+}
+
+.dark {
+  --canvas: 13 10 19;
+  --canvas-tint: 20 15 30;
+  --surface: 23 18 31;
+  --surface-2: 31 24 41;
+  --line: 44 35 56;
+  --line-strong: 59 47 74;
+
+  --ink: 242 238 248;
+  --ink-2: 185 177 199;
+  --ink-3: 139 131 153;
+
+  --accent: 167 139 250;
+  --accent-2: 192 132 252;
+  --accent-3: 244 114 182;
+  --accent-soft: 40 30 56;
+  --accent-ink: 196 181 253;
+
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.4), 0 8px 24px -12px rgb(0 0 0 / 0.6);
+  --shadow-lift: 0 2px 4px rgb(0 0 0 / 0.4), 0 20px 40px -16px rgb(0 0 0 / 0.7);
+  --shadow-nav: 0 1px 0 rgb(255 255 255 / 0.04), 0 8px 32px -20px rgb(0 0 0 / 0.8);
+  --glow: 0.85;
 }
 
 * {
@@ -15,11 +62,130 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(var(--ink));
+  background-color: rgb(var(--canvas));
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   overflow-x: hidden;
+  font-feature-settings: "cv11", "ss01";
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+::selection {
+  background: rgb(var(--accent) / 0.22);
+  color: rgb(var(--ink));
+}
+
+:focus-visible {
+  outline: 2px solid rgb(var(--accent));
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Themed scrollbar so the dark mode doesn't get a bright gutter */
+::-webkit-scrollbar { width: 11px; height: 11px; }
+::-webkit-scrollbar-track { background: rgb(var(--canvas)); }
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--line-strong));
+  border: 3px solid rgb(var(--canvas));
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover { background: rgb(var(--accent) / 0.5); }
+
+@layer components {
+  /* The one gradient used for emphasis across the site. */
+  .text-gradient {
+    background-image: linear-gradient(
+      100deg,
+      rgb(var(--accent)) 0%,
+      rgb(var(--accent-2)) 45%,
+      rgb(var(--accent-3)) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .rule {
+    height: 3px;
+    width: 3.5rem;
+    border-radius: 999px;
+    background-image: linear-gradient(90deg, rgb(var(--accent)), rgb(var(--accent-3)));
+  }
+
+  .card {
+    background-color: rgb(var(--surface));
+    border: 1px solid rgb(var(--line));
+    box-shadow: var(--shadow-card);
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease,
+      border-color 0.3s ease;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lift);
+    border-color: rgb(var(--accent) / 0.35);
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    border: 1px solid rgb(var(--accent) / 0.2);
+    background-color: rgb(var(--accent-soft));
+    color: rgb(var(--accent-ink));
+  }
+}
+
+/* JS-free entrance reveal. The element is visible by default and the
+   animation only overrides it while playing, so content can never be
+   left stranded at opacity 0 if scripting or an animation library fails. */
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.reveal {
+  animation: reveal-up 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes swap-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.swap-in {
+  animation: swap-in 0.35s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  /* Drop the entrance animations entirely rather than fast-forwarding them,
+     so a non-zero animation-delay can't leave content stuck at opacity 0. */
+  .reveal,
+  .swap-in {
+    animation: none !important;
+  }
 }

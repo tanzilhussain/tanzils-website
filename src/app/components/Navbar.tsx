@@ -2,12 +2,15 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
-import { FaEnvelope, FaLinkedin, FaGithub, FaBars, FaTimes } from "react-icons/fa";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
+import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
+import { Menu, X } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
   { href: "/my-work", label: "my work" },
+  { href: "/on-the-side", label: "on the side" },
   { href: "/my-story", label: "about me" },
 ];
 
@@ -19,37 +22,70 @@ const socialLinks = [
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Close the mobile sheet whenever the route changes.
+  useEffect(() => setIsOpen(false), [pathname]);
+
   return (
-    <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-sm z-50 shadow-sm border-b border-purple-100">
-      <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-        <Link href="/" className="text-2xl hover:scale-110 transition-transform duration-200">🏠</Link>
-
-        <button
-          className="md:hidden text-2xl text-gray-700 cursor-pointer"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle menu"
+    <nav
+      className={`fixed top-0 z-50 w-full transition-all duration-300 ${
+        scrolled
+          ? "border-b border-line bg-canvas/80 shadow-nav backdrop-blur-xl"
+          : "border-b border-transparent bg-transparent"
+      }`}
+    >
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <Link
+          href="/"
+          className="group flex items-center gap-2.5"
+          aria-label="Home"
         >
-          {isOpen ? <FaTimes /> : <FaBars />}
-        </button>
+          <span
+            className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-accent
+              to-accent-3 text-sm font-bold text-white shadow-sm transition-transform
+              duration-300 ease-spring group-hover:-rotate-6 group-hover:scale-105"
+          >
+            th
+          </span>
+          <span className="hidden text-[17px] font-semibold tracking-tight text-ink sm:block">
+            tanzil hussain
+          </span>
+        </Link>
 
-        <div className="hidden md:flex gap-8 items-center">
-          {navLinks.map(({ href, label }) => (
-            <Link
-              key={href}
-              href={href}
-              className={`text-lg font-medium transition-colors duration-200 relative pb-1 group
-                ${pathname === href ? "text-purple-600" : "text-gray-700 hover:text-purple-600"}`}
-            >
-              {label}
-              <span
-                className={`absolute bottom-0 left-0 h-0.5 bg-purple-600 rounded-full transition-all duration-300
-                  ${pathname === href ? "w-full" : "w-0 group-hover:w-full"}`}
-              />
-            </Link>
-          ))}
-          <div className="flex gap-4 items-center">
+        <div className="hidden items-center gap-1 md:flex">
+          {navLinks.map(({ href, label }) => {
+            const active = pathname === href;
+            return (
+              <Link
+                key={href}
+                href={href}
+                className={`relative rounded-full px-4 py-2 text-base font-medium transition-colors
+                  duration-200 ${active ? "text-accent-ink" : "text-ink-2 hover:text-accent"}`}
+              >
+                {active && (
+                  <motion.span
+                    layoutId="nav-pill"
+                    transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                    className="absolute inset-0 -z-10 rounded-full bg-accent-soft ring-1 ring-accent/20"
+                  />
+                )}
+                {label}
+              </Link>
+            );
+          })}
+
+          <span className="mx-3 h-5 w-px bg-line-strong" />
+
+          <div className="flex items-center gap-3">
             {socialLinks.map(({ href, icon: Icon, label }) => (
               <a
                 key={href}
@@ -57,37 +93,54 @@ export default function Navbar() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="text-xl text-gray-600 hover:text-purple-600 transition-colors duration-200"
+                className="text-ink-3 transition-colors duration-200 hover:text-accent"
               >
-                <Icon />
+                <Icon size={17} />
               </a>
             ))}
+            <ThemeToggle className="ml-1" />
           </div>
+        </div>
+
+        <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle />
+          <button
+            className="grid h-9 w-9 place-items-center rounded-full border border-line bg-surface-2 text-ink-2"
+            onClick={() => setIsOpen((v) => !v)}
+            aria-label="Toggle menu"
+            aria-expanded={isOpen}
+          >
+            {isOpen ? <X size={18} /> : <Menu size={18} />}
+          </button>
         </div>
       </div>
 
-      <AnimatePresence>
+      <AnimatePresence initial={false}>
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.2 }}
-            className="md:hidden bg-white border-t border-purple-100 overflow-hidden"
+            transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+            className="overflow-hidden border-t border-line bg-canvas/95 backdrop-blur-xl md:hidden"
           >
-            <div className="px-6 py-4 flex flex-col gap-3">
+            <div className="flex flex-col gap-1 px-6 py-4">
               {navLinks.map(({ href, label }) => (
                 <Link
                   key={href}
                   href={href}
                   onClick={() => setIsOpen(false)}
-                  className={`text-lg font-medium py-2 transition-colors duration-200 hover:text-purple-600
-                    ${pathname === href ? "text-purple-600 font-bold" : "text-gray-700"}`}
+                  className={`rounded-xl px-3 py-2.5 text-[17px] font-medium transition-colors duration-200
+                    ${
+                      pathname === href
+                        ? "bg-accent-soft text-accent-ink"
+                        : "text-ink-2 hover:bg-surface-2 hover:text-accent"
+                    }`}
                 >
                   {label}
                 </Link>
               ))}
-              <div className="flex gap-5 pt-2">
+              <div className="mt-2 flex gap-5 border-t border-line px-3 pt-4">
                 {socialLinks.map(({ href, icon: Icon, label }) => (
                   <a
                     key={href}
@@ -95,9 +148,9 @@ export default function Navbar() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={label}
-                    className="text-xl text-gray-700 hover:text-purple-600 transition-colors duration-200"
+                    className="text-ink-3 transition-colors duration-200 hover:text-accent"
                   >
-                    <Icon />
+                    <Icon size={18} />
                   </a>
                 ))}
               </div>

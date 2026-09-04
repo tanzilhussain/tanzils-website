@@ -1,19 +1,21 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { BarChart2, Database, Brain, Code, Cloud, Users } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ArrowUpRight, BarChart2, Brain, Cloud, Code, Database, Users } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import Navbar from "./Navbar";
+import Background from "./Background";
+import Footer from "./Footer";
 
-const roles = ["visionary🔮", "traveler✈️", "builder🛠", "designer🎨", "strategist🧠", "dreamer🌙", "analyst 💭"];
+const roles = ["visionary 🔮", "traveler ✈️", "builder 🛠", "designer 🎨", "strategist 🧠", "dreamer 🌙", "analyst 💭"];
 
 const skills = [
   {
     icon: Users,
     title: "Product Management",
-    description: "Scoping roadmaps, writing requirements, and leading cross-functional teams to ship features that meet user and business goals",
+    description:
+      "Scoping roadmaps, writing requirements, and leading cross-functional teams to ship features that meet user and business goals",
   },
   {
     icon: Code,
@@ -61,6 +63,9 @@ const highlights = [
   },
 ];
 
+/** Stagger helper — entrance timing lives in CSS, so content is never JS-gated. */
+const delay = (ms: number) => ({ animationDelay: `${ms}ms` });
+
 export default function HomeClient() {
   const [roleIndex, setRoleIndex] = useState(0);
 
@@ -72,158 +77,156 @@ export default function HomeClient() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-purple-50 to-purple-100 flex flex-col items-center text-center px-6 overflow-x-hidden">
+    <div className="flex min-h-screen flex-col overflow-x-hidden">
+      <Background />
       <Navbar />
 
-      {/* Hero */}
-      <div className="max-w-4xl mx-auto mt-36 px-4">
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 text-gray-900 leading-tight tracking-tight"
-        >
-          hello, i&apos;m{" "}
-          <span className="bg-gradient-to-r from-purple-600 via-violet-500 to-pink-500 bg-clip-text text-transparent">
-            tanzil hussain
-          </span>
-          <br />
-          <span className="text-gray-700 font-bold">a(n){" "}</span>
-          <AnimatePresence mode="wait">
-            <motion.span
-              key={roles[roleIndex]}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.4 }}
-              className="text-purple-600"
+      <main className="mx-auto w-full max-w-5xl flex-1 px-6">
+        {/* ---------------------------------------------------------- Hero */}
+        <section className="grid items-center gap-12 pt-32 md:grid-cols-[1.15fr_0.85fr] md:gap-14 md:pt-40">
+          <div className="text-center md:text-left">
+            <h1
+              className="reveal text-4xl font-semibold leading-[1.08] tracking-[-0.03em] text-ink sm:text-5xl lg:text-6xl"
             >
-              {roles[roleIndex]}
-            </motion.span>
-          </AnimatePresence>
-        </motion.h1>
+              hello, i&apos;m
+              <br />
+              <span className="text-gradient">tanzil hussain</span>
+            </h1>
 
-        {/* Intro */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.7 }}
-          className="mt-16"
-        >
-          <div className="flex flex-col md:flex-row gap-10 items-center">
-            <div className="relative shrink-0">
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-purple-400 to-pink-400 blur-md opacity-40 scale-105" />
-              <Image
-                src="/IMG_0418.jpg"
-                alt="Tanzil Hussain"
-                width={200}
-                height={220}
-                className="relative w-40 h-48 md:w-48 md:h-56 rounded-2xl object-cover shadow-xl ring-4 ring-white"
-              />
-            </div>
-            <div className="prose prose-lg text-center md:text-left space-y-3">
-              <p className="text-gray-700 text-lg leading-relaxed">
-                I&apos;m studying{" "}
-                <span className="text-purple-600 font-semibold">Artificial Intelligence for Business</span>{" "}
-                at USC, and I&apos;m passionate about building AI-driven, user-centric innovations.
-              </p>
-              <p className="text-gray-700 text-lg leading-relaxed">
-                I also love photography, flea markets, and butterfly watching.
-              </p>
+            <p
+              style={delay(160)}
+              className="reveal mt-4 flex items-baseline justify-center gap-2 text-xl font-medium text-ink-2 md:justify-start md:text-2xl"
+            >
+              <span>a(n)</span>
+              <span className="relative inline-block text-left">
+                {/* Invisible longest role holds the line box open so the
+                    absolutely positioned word can't collapse onto the copy. */}
+                <span className="invisible" aria-hidden>
+                  strategist 🧠
+                </span>
+                <span
+                  key={roles[roleIndex]}
+                  className="swap-in absolute left-0 top-0 whitespace-nowrap font-semibold text-accent"
+                >
+                  {roles[roleIndex]}
+                </span>
+              </span>
+            </p>
+
+            <p
+              style={delay(240)}
+              className="reveal mx-auto mt-7 max-w-lg text-[17px] leading-relaxed text-ink-2 md:mx-0"
+            >
+              I&apos;m studying{" "}
+              <span className="font-semibold text-accent-ink">Artificial Intelligence for Business</span>{" "}
+              at USC, and I&apos;m passionate about building AI-driven, user-centric innovations. I also
+              love photography, flea markets, and butterfly watching.
+            </p>
+
+            <div
+              style={delay(320)}
+              className="reveal mt-8 flex flex-wrap items-center justify-center gap-3 md:justify-start"
+            >
               <Link
+                href="/my-work"
+                className="group inline-flex items-center gap-1.5 rounded-full bg-ink px-5 py-2.5 text-sm
+                  font-semibold text-canvas transition-all duration-300 ease-spring hover:scale-[1.03]
+                  hover:bg-accent hover:text-white"
+              >
+                see my work
+                <ArrowUpRight
+                  size={16}
+                  className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                />
+              </Link>
+              <a
                 href="https://www.linkedin.com/in/tanzilhussain/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block mt-2 text-purple-600 font-bold text-lg hover:text-pink-500 transition-colors duration-200 no-underline"
+                className="inline-flex items-center gap-1.5 rounded-full border border-line-strong bg-surface/70
+                  px-5 py-2.5 text-sm font-semibold text-ink-2 backdrop-blur transition-all duration-300
+                  hover:border-accent/40 hover:text-accent"
               >
-                Let&apos;s connect! 🦋
-              </Link>
+                let&apos;s connect 🦋
+              </a>
             </div>
           </div>
-        </motion.div>
 
-        {/* Skills */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.5 }}
-          className="mt-24"
-        >
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-2 text-gray-900 tracking-tight">
-            Skills &amp; Toolkit
-          </h2>
-          <div className="w-16 h-1 bg-gradient-to-r from-purple-600 to-pink-500 rounded-full mx-auto mb-10" />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Portrait */}
+          <div style={delay(200)} className="reveal relative mx-auto w-full max-w-[220px] md:max-w-[290px]">
+            <div className="absolute -inset-3 rounded-[2rem] bg-gradient-to-br from-accent/40 via-accent-2/30 to-accent-3/40 blur-2xl" />
+            <div className="relative overflow-hidden rounded-3xl border border-line bg-surface p-2 shadow-lift">
+              <Image
+                src="/IMG_0418.jpg"
+                alt="Tanzil Hussain"
+                width={560}
+                height={700}
+                priority
+                className="aspect-[4/5] w-full rounded-[1.25rem] object-cover"
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* -------------------------------------------------------- Skills */}
+        <section className="pt-20 md:pt-28">
+          <SectionHeading eyebrow="what i do" title="Skills & Toolkit" />
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {skills.map((item, i) => (
-              <motion.div
+              <div
                 key={item.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ delay: i * 0.08, duration: 0.5 }}
-                className="group bg-white rounded-xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-purple-200 text-left"
+                style={delay(80 + i * 60)}
+                className="reveal card card-hover group rounded-2xl p-6"
               >
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-gradient-to-br from-purple-100 to-violet-100 rounded-xl group-hover:from-purple-200 group-hover:to-violet-200 transition-colors duration-300">
-                    <item.icon className="w-6 h-6 text-purple-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-lg text-gray-900 mb-1">{item.title}</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
-                  </div>
+                <div
+                  className="mb-4 grid h-11 w-11 place-items-center rounded-xl bg-accent-soft
+                    text-accent ring-1 ring-accent/15 transition-transform duration-300
+                    ease-spring group-hover:scale-110 group-hover:-rotate-3"
+                >
+                  <item.icon className="h-[21px] w-[21px]" />
                 </div>
-              </motion.div>
+                <h3 className="mb-1.5 text-[15px] font-semibold tracking-tight text-ink">{item.title}</h3>
+                <p className="text-sm leading-relaxed text-ink-3">{item.description}</p>
+              </div>
             ))}
           </div>
-        </motion.div>
+        </section>
 
-        {/* Timeline */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.5 }}
-          className="mt-24 mb-6"
-        >
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-2 text-gray-900 tracking-tight">
-            Recent Highlights
-          </h2>
-          <div className="w-16 h-1 bg-gradient-to-r from-purple-600 to-pink-500 rounded-full mx-auto mb-10" />
-          <div className="space-y-6 text-left">
-            {highlights.map((item, i) => (
-              <motion.div
-                key={item.year}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ delay: i * 0.1, duration: 0.5 }}
-                className="relative pl-8"
-              >
-                <div className="absolute left-0 top-2 w-4 h-4 rounded-full bg-gradient-to-br from-purple-500 to-pink-400 shadow-sm shadow-purple-200" />
-                {i < highlights.length - 1 && (
-                  <div className="absolute left-[7px] top-6 w-px h-full bg-purple-200" />
-                )}
-                <span className="inline-block text-sm font-bold text-purple-600 bg-purple-50 px-3 py-0.5 rounded-full mb-2 border border-purple-100">
-                  {item.year}
-                </span>
-                <p className="text-gray-700 leading-relaxed">{item.text}</p>
-              </motion.div>
-            ))}
+        {/* ------------------------------------------------------ Timeline */}
+        <section className="pb-24 pt-20 md:pt-28">
+          <SectionHeading eyebrow="the story so far" title="Recent Highlights" />
+          <div className="relative">
+            {/* Single continuous rail behind the dots */}
+            <div className="absolute bottom-3 left-[7px] top-3 w-px bg-gradient-to-b from-accent/50 via-line-strong to-transparent" />
+            <div className="space-y-9">
+              {highlights.map((item, i) => (
+                <div key={item.year} style={delay(80 + i * 70)} className="reveal relative pl-9">
+                  <span
+                    className="absolute left-0 top-1.5 h-[15px] w-[15px] rounded-full border-[3px]
+                      border-canvas bg-gradient-to-br from-accent to-accent-3 ring-1 ring-accent/30"
+                  />
+                  <span className="font-mono text-xs font-semibold tracking-widest text-accent-ink">
+                    {item.year}
+                  </span>
+                  <p className="mt-2 leading-relaxed text-ink-2">{item.text}</p>
+                </div>
+              ))}
+            </div>
           </div>
-        </motion.div>
-      </div>
+        </section>
+      </main>
 
-      <footer className="mt-16 w-full text-center py-10 text-gray-500">
-        <p className="text-sm">
-          <a
-            href="https://github.com/tanzilhussain/tanzils-website"
-            className="hover:text-purple-600 transition-colors duration-200 underline underline-offset-2"
-          >
-            &copy; {new Date().getFullYear()} Tanzil Hussain. Built with ❤️ using Next.js, Tailwind CSS, and TypeScript.
-          </a>
-        </p>
-      </footer>
+      <Footer />
+    </div>
+  );
+}
+
+function SectionHeading({ eyebrow, title }: { eyebrow: string; title: string }) {
+  return (
+    <div className="reveal mb-9">
+      <p className="mb-2 font-mono text-xs uppercase tracking-[0.2em] text-ink-3">{eyebrow}</p>
+      <h2 className="text-2xl font-semibold tracking-tight text-ink sm:text-3xl">{title}</h2>
+      <div className="rule mt-3" />
     </div>
   );
 }

@@ -1,10 +1,12 @@
 "use client";
 
-import { useState, KeyboardEvent } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Navbar from "../components/Navbar";
+import Background from "../components/Background";
+import Footer from "../components/Footer";
 
 type Action = { label: string; href: string };
 type Item = {
@@ -123,148 +125,146 @@ const projects: Item[] = [
   },
 ];
 
+const tabs = ["internships", "projects"] as const;
+type Tab = (typeof tabs)[number];
+
 export default function MyWorkClient() {
-  const [activeTab, setActiveTab] = useState<"internships" | "projects">("internships");
-
-  const openInNewTab = (href: string) => {
-    if (!href || href === "#") return;
-    window.open(href, "_blank", "noopener,noreferrer");
-  };
-
-  const onKeyActivate = (e: KeyboardEvent, href: string) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      openInNewTab(href);
-    }
-  };
-
+  const [activeTab, setActiveTab] = useState<Tab>("internships");
   const items = activeTab === "internships" ? internships : projects;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-purple-50 to-purple-100 flex flex-col items-center px-6 overflow-x-hidden">
+    <div className="flex min-h-screen flex-col overflow-x-hidden">
+      <Background />
       <Navbar />
 
-      <div className="w-full max-w-6xl pt-28 px-4">
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight"
-        >
-          my work
-        </motion.h1>
-        <motion.div
-          initial={{ width: 0 }}
-          animate={{ width: 64 }}
-          transition={{ delay: 0.3, duration: 0.5 }}
-          className="h-1 bg-gradient-to-r from-purple-600 to-pink-500 rounded-full mt-3 mb-8"
-        />
+      <main className="mx-auto w-full max-w-6xl flex-1 px-6 pb-24 pt-32 md:pt-40">
+        <div className="reveal">
+          <p className="mb-2 font-mono text-xs uppercase tracking-[0.2em] text-ink-3">portfolio</p>
+          <h1 className="text-4xl font-semibold tracking-[-0.03em] text-ink sm:text-5xl">
+            my <span className="text-gradient">work</span>
+          </h1>
+          <div className="rule mt-4" />
+        </div>
 
-        {/* Tabs */}
-        <div className="flex gap-3 mb-8">
-          {(["internships", "projects"] as const).map((tab) => (
+        {/* Segmented control */}
+        <div
+          style={{ animationDelay: "100ms" }}
+          className="reveal mt-8 inline-flex rounded-full border border-line bg-surface/70 p-1 backdrop-blur"
+        >
+          {tabs.map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-250 border
-                ${activeTab === tab
-                  ? "bg-purple-600 text-white border-purple-600 shadow-md shadow-purple-200"
-                  : "bg-white text-gray-600 border-gray-200 hover:border-purple-300 hover:text-purple-600"}`}
+              className={`relative rounded-full px-5 py-2 text-sm font-semibold capitalize transition-colors
+                duration-200 ${activeTab === tab ? "text-white" : "text-ink-3 hover:text-accent"}`}
             >
-              {tab.charAt(0).toUpperCase() + tab.slice(1)}
+              {activeTab === tab && (
+                <motion.span
+                  layoutId="tab-pill"
+                  transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                  className="absolute inset-0 -z-10 rounded-full bg-gradient-to-r from-accent to-accent-2 shadow-sm"
+                />
+              )}
+              {tab}
             </button>
           ))}
         </div>
 
-        {/* Cards */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeTab}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -16 }}
-            transition={{ duration: 0.3 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-12"
-          >
-            {items.map((item, index) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 24 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.07, duration: 0.4 }}
-                className="group flex flex-col bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden border border-transparent hover:border-purple-100"
-              >
-                {item.date && (
-                  <div className="px-5 pt-4">
-                    <span className="text-xs font-bold text-purple-600 bg-purple-50 px-3 py-1 rounded-full border border-purple-100">
-                      {item.date}
-                    </span>
-                  </div>
-                )}
-                {item.image && (
-                  <div className="w-full h-36 mt-4 px-5">
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      width={300}
-                      height={144}
-                      className="w-full h-full rounded-xl object-contain"
-                    />
-                  </div>
-                )}
+        {/* Keyed on the tab so switching re-mounts the cards and replays the
+            CSS entrance animation. */}
+        <div
+          key={activeTab}
+          className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3"
+        >
+          {items.map((item, index) => (
+            <WorkCard key={item.title} item={item} index={index} />
+          ))}
+        </div>
+      </main>
 
-                <div className={`flex flex-col flex-1 p-5 gap-3 ${!item.image ? "mt-2" : ""}`}>
-                  <div>
-                    <h2 className="text-base font-bold text-gray-900 leading-snug">{item.title}</h2>
-                    {item.location && <p className="text-xs text-gray-500 mt-0.5">{item.location}</p>}
-                  </div>
-                  <p className="text-sm text-gray-600 leading-relaxed whitespace-pre-wrap">{item.description}</p>
-
-                  {item.tags && item.tags.length > 0 && (
-                    <div className="flex flex-wrap gap-1.5 mt-1">
-                      {item.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="text-xs font-medium px-2.5 py-1 bg-violet-50 text-violet-700 rounded-full border border-violet-100"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-
-                  {item.actions && item.actions.length > 0 && (
-                    <div className="flex flex-wrap gap-2 mt-auto pt-3">
-                      {item.actions.map((a, i) => (
-                        <button
-                          key={i}
-                          onClick={() => openInNewTab(a.href)}
-                          onKeyDown={(e) => onKeyActivate(e, a.href)}
-                          className="px-4 py-1.5 rounded-full text-xs font-bold bg-purple-600 text-white hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 transition-colors duration-200"
-                          aria-label={a.label}
-                        >
-                          {a.label} ↗
-                        </button>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </AnimatePresence>
-      </div>
-
-      <footer className="mt-4 w-full text-center py-10 text-gray-500">
-        <p className="text-sm">
-          <Link
-            href="https://github.com/tanzilhussain/tanzils-website"
-            className="hover:text-purple-600 transition-colors duration-200 underline underline-offset-2"
-          >
-            &copy; {new Date().getFullYear()} Tanzil Hussain. Built with ❤️ using Next.js, Tailwind CSS, and TypeScript.
-          </Link>
-        </p>
-      </footer>
+      <Footer />
     </div>
+  );
+}
+
+function WorkCard({ item, index }: { item: Item; index: number }) {
+  // Descriptions are authored as blank-line separated bullets.
+  const points = item.description.split("\n\n").filter(Boolean);
+
+  return (
+    <article
+      style={{ animationDelay: `${index * 60}ms` }}
+      className="reveal card card-hover flex flex-col overflow-hidden rounded-2xl"
+    >
+      {item.image && (
+        // Logos stay on a light plate in both themes so dark wordmarks stay legible.
+        <div className="border-b border-line bg-white px-6 py-7">
+          <div className="relative h-24 w-full">
+            <Image
+              src={item.image}
+              alt={item.title}
+              fill
+              sizes="(max-width: 768px) 100vw, 400px"
+              className="object-contain"
+            />
+          </div>
+        </div>
+      )}
+
+      <div className="flex flex-1 flex-col gap-3 p-5">
+        <div>
+          {item.date && (
+            <p className="mb-1.5 font-mono text-[11px] font-medium uppercase tracking-wider text-accent-ink">
+              {item.date}
+            </p>
+          )}
+          <h2 className="text-[15px] font-semibold leading-snug tracking-tight text-ink">
+            {item.title}
+          </h2>
+          {item.location && <p className="mt-1 text-xs text-ink-3">{item.location}</p>}
+        </div>
+
+        <ul className="space-y-2">
+          {points.map((point, i) => (
+            <li key={i} className="flex gap-2.5 text-[13px] leading-relaxed text-ink-3">
+              <span className="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-accent/60" />
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
+
+        {item.tags && item.tags.length > 0 && (
+          <div className="flex flex-wrap gap-1.5 pt-1">
+            {item.tags.map((tag) => (
+              <span key={tag} className="chip px-2.5 py-1 text-[11px] font-medium">
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+
+        {item.actions && item.actions.length > 0 && (
+          <div className="mt-auto flex flex-wrap gap-2 pt-3">
+            {item.actions.map((a) => (
+              <a
+                key={a.href}
+                href={a.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group/btn inline-flex items-center gap-1 rounded-full border border-line-strong
+                  bg-surface-2 px-3.5 py-1.5 text-[11px] font-semibold text-ink-2 transition-all
+                  duration-200 hover:border-accent/40 hover:bg-accent-soft hover:text-accent-ink"
+              >
+                {a.label}
+                <ArrowUpRight
+                  size={12}
+                  className="transition-transform duration-200 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5"
+                />
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
+    </article>
   );
 }
